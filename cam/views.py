@@ -7,10 +7,6 @@ def camera_1(request):
 	template = loader.get_template('cam/camera.html')
 	return HttpResponse(template.render({}, request))
 
-def index(request):
-	template = loader.get_template('cam/index.html')
-	return HttpResponse(template.render({}, request))
-
 class VideoCamera(object):
     def __init__(self):
         self.video = cv2.VideoCapture(0)
