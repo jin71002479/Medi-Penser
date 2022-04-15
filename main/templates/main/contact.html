@@ -3,7 +3,7 @@
 <html lang="en">
 
   <head>
-    <title>Pharma &mdash; Colorlib Template</title>
+    <title>MEDIPENSER &mdash; Colorlib Template</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
@@ -26,8 +26,6 @@
 <body>
 
   <div class="site-wrap">
-
-
     <div class="site-navbar py-2">
 
       <div class="search-wrap">
@@ -43,49 +41,29 @@
         <div class="d-flex align-items-center justify-content-between">
           <div class="logo">
             <div class="site-logo">
-              <a href="{% url 'main:index' %}" class="js-logo-clone">Pharma</a>
+              <a href="{% url 'main:index' %}" class="js-logo-clone">MEDIPENSER</a>
             </div>
           </div>
           <div class="main-nav d-none d-lg-block">
             <nav class="site-navigation text-right text-md-center" role="navigation">
               <ul class="site-menu js-clone-nav d-none d-lg-block">
                 <li><a href="{% url 'main:index' %}">Home</a></li>
-                <li><a href="shop.html">Store</a></li>
-                <li class="has-children">
-                  <a href="#">Dropdown</a>
-                  <ul class="dropdown">
-                    <li><a href="#">Supplements</a></li>
-                    <li class="has-children">
-                      <a href="#">Vitamins</a>
-                      <ul class="dropdown">
-                        <li><a href="#">Supplements</a></li>
-                        <li><a href="#">Vitamins</a></li>
-                        <li><a href="#">Diet &amp; Nutrition</a></li>
-                        <li><a href="#">Tea &amp; Coffee</a></li>
-                      </ul>
-                    </li>
-                    <li><a href="#">Diet &amp; Nutrition</a></li>
-                    <li><a href="#">Tea &amp; Coffee</a></li>
-
-                  </ul>
-                </li>
-                <li><a href="about.html">About</a></li>
-                <li class="active"><a href="contact.html">Contact</a></li>
+                <li><a href="{% url 'cam:show' %}">Camera</a></li>
+                <li><a href="{% url 'main:about' %}">UserPage</a></li>
+                <li class="active"><a href="{% url 'main:contact' %}">Contact</a></li>
+                <li><a href="login.html">Logout</a></li>
               </ul>
             </nav>
           </div>
           <div class="icons">
-            <a href="#" class="icons-btn d-inline-block js-search-open"><span class="icon-search"></span></a>
-            <a href="cart.html" class="icons-btn d-inline-block bag">
-              <span class="icon-shopping-bag"></span>
-              <span class="number">2</span>
-            </a>
             <a href="#" class="site-menu-toggle js-menu-toggle ml-3 d-inline-block d-lg-none"><span
                 class="icon-menu"></span></a>
           </div>
         </div>
       </div>
-    </div>
+    </div> 
+
+<!--네비게이션 END -->
 
     <div class="bg-light py-3">
       <div class="container">
