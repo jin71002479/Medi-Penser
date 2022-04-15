@@ -93,13 +93,23 @@
 
 <!--네비게이션 END -->
 
-    <div class="jumbotron jumbotron-fluid">
+    {% comment %} <div class="jumbotron jumbotron-fluid">
       <div class="container">
         <h1 class="display-4" style="color:black;">UserPage</h1>
         <p class="lead" style="color:black;">사용자의 정보를 보여주는 페이지입니다.</p>
       </div>
-    </div>
+    </div> {% endcomment %}
 
+    <div class="bg-light py-3">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 mb-0">
+            <a href="{% url 'main:index' %}"><span style="color:#86DACA">Home</span></a> <span class="mx-2 mb-0">/</span>
+            <strong class="text-black">UserPage</strong>
+          </div>
+        </div>
+      </div>
+    </div>
     
     <div class="site-section bg-light custom-border-bottom" data-aos="fade">
       <div class="container">
@@ -109,7 +119,6 @@
         </div>
         <div class="row">
           <div class="col-md-5 col-lg-6 mb-5">
-    
             <div class="block-38 text-center">
               <div class="block-38-img">
                 <div class="block-38-header">
@@ -120,7 +129,6 @@
               </div>
             </div>
           </div>
-
           {% comment %} <div class="col-md-2 col-lg-2 mb-2">
             <div class="block-38 text-center">
               <div class="block-38-img">
@@ -157,9 +165,48 @@
               </div>
             </div>
           </div> {% endcomment %}
-
-
-          <div class="col-md-6 col-lg-6 mb-5">
+          <div class="col-md-6">
+            <div class="card mb-4">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-sm-4">
+                    <h6 class="mb-1">나이</h6>
+                  </div>
+                  <div class="col-sm-9 text-secondary">
+                    60
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-4">
+                    <h6 class="mb-1">성별</h6>
+                  </div>
+                  <div class="col-sm-9 text-secondary">
+                    female
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-4">
+                    <h6 class="mb-1">핸드폰 번호</h6>
+                  </div>
+                  <div class="col-sm-9 text-secondary">
+                    010-****-****
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-4">
+                    <h6 class="mb-1">환자와의 관계</h6>
+                  </div>
+                  <div class="col-sm-9 text-secondary">
+                    Parents
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% comment %} <div class="col-md-6 col-lg-6 mb-5">
             <div class="block-38 text-center">
               <div class="block-38-img">
                 <div class="cont">
@@ -177,12 +224,12 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> {% endcomment %}
 
 
     
       
-
+{% comment %} 
     <div class="site-section bg-light custom-border-bottom" data-aos="fade">
       <div class="container">
         <div class="row mb-5">
@@ -281,7 +328,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> {% endcomment %}
     
 
     <footer class="site-footer">
