@@ -60,7 +60,7 @@ a {
     box-shadow: none; }
   .btn.btn-primary:hover {
     background: transparent;
-    color: #51eaea; }
+    color: #86daca; }
   .btn.btn-black {
     background: #000;
     color: #fff; }
@@ -71,7 +71,7 @@ a {
 .form-control {
   height: 43px; }
   .form-control:active, .form-control:focus {
-    border-color: #51eaea; }
+    border-color: #86daca; }
   .form-control:hover, .form-control:active, .form-control:focus {
     -webkit-box-shadow: none !important;
     box-shadow: none !important; }

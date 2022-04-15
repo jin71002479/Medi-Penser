@@ -25,6 +25,17 @@
  
 <body>
 
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200&display=swap');
+    .banner-wrap.h-100 {
+    .pt-5, .py-5 {
+      padding-top: 0rem!important;
+    }
+    .mt-5, .my-5 {
+      margin-top :2 rem!important;
+    }
+    footer { font-family: 'Nanum Gothic', sans-serif; }
+  </style>
   <div class="site-wrap">
     <div class="site-navbar py-2">
 
@@ -97,25 +108,26 @@
     </div>
 
 
-    <footer class="site-footer">
+    <footer class="site-footer" style="background-color:#c6eee6; padding:3em 0;">
       <div class="container">
         <div class="row">
-          <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
+          <div class="col-md-6 col-lg-3 mb-4 mb-lg-0" style="margin-right:120px;">
 
             <div class="block-7">
               <h3 class="footer-heading mb-4">About Us</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius quae reiciendis distinctio voluptates
-                sed dolorum excepturi iure eaque, aut unde.</p>
+              <p style="color:#25262a;">'MEDIPENSER'는 치매나 지적장애인 등 보호가 필요한
+                사람들에게 올바른 약을 복용할 수 있도록 얼굴인식을 기반으로 한 AI 서비스입니다.
+              </p>
             </div>
 
           </div>
           <div class="col-lg-3 mx-auto mb-5 mb-lg-0">
             <h3 class="footer-heading mb-4">Quick Links</h3>
             <ul class="list-unstyled">
-              <li><a href="#">Supplements</a></li>
-              <li><a href="#">Vitamins</a></li>
-              <li><a href="#">Diet &amp; Nutrition</a></li>
-              <li><a href="#">Tea &amp; Coffee</a></li>
+              <li><a href="{% url 'cam:show' %}">CAMERA</a></li>
+              <li><a href="{% url 'main:about' %}">USERPAGE</a></li>
+              <li><a href="{% url 'main:contact' %}">CONTACT</a></li>
+              
             </ul>
           </div>
 
@@ -123,9 +135,9 @@
             <div class="block-5 mb-5">
               <h3 class="footer-heading mb-4">Contact Info</h3>
               <ul class="list-unstyled">
-                <li class="address">203 Fake St. Mountain View, San Francisco, California, USA</li>
-                <li class="phone"><a href="tel://23923929210">+2 392 3929 210</a></li>
-                <li class="email">emailaddress@domain.com</li>
+                <li class="address">㈜케이티 대전 서구 탄방동 649 </li>
+                <li class="phone"><a href="tel://0421234567">042 123 4567</a></li>
+                <li class="email">medipenser@MEDIPENSER.com</li>
               </ul>
             </div>
 
@@ -137,9 +149,9 @@
             <p>
               <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
               Copyright &copy;
-              <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made
-              with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank"
-                class="text-primary">Colorlib</a>. Downloaded from <a href="https://themeslab.org/" target="_blank">Themeslab</a>
+              <script>document.write(new Date().getFullYear());</script> MEDIPENSER<i class="icon-heart" aria-hidden="true"></i> 
+             <!-- by <a href="https://colorlib.com" target="_blank"
+                class="text-primary">Colorlib</a>. Downloaded from <a href="https://themeslab.org/" target="_blank">Themeslab</a> -->
               <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
             </p>
           </div>
