@@ -67,7 +67,6 @@
 
   <div class="site-wrap">
     <div class="site-navbar py-2">
-
       <div class="search-wrap">
         <div class="container">
           <a href="#" class="search-close js-search-close"><span class="icon-close2"></span></a>
@@ -76,7 +75,6 @@
           </form>
         </div>
       </div>
-
       <div class="container">
         <div class="d-flex align-items-center justify-content-between">
           <div class="logo">
@@ -86,44 +84,33 @@
           </div>
           <div class="main-nav d-none d-lg-block">
             <nav class="site-navigation text-right text-md-center" role="navigation">
-              <ul class="site-menu js-clone-nav d-none d-lg-block">
-                <li><a href="{% url 'main:index' %}">Home</a></li>
-                <li><a href="{% url 'cam:show' %}">Camera</a></li>
-                <li class="active"><a href="{% url 'main:about' %}">UserPage</a></li>
-                <li><a href="{% url 'main:contact' %}">Contact</a></li>
-                <li><a href="login.html">LOGOUT</a></li>
-              </ul>
+            <ul class="site-menu js-clone-nav d-none d-lg-block">
+              <li><a href="{% url 'main:index' %}">Home</a></li>
+              <li><a href="{% url 'cam:show' %}">Camera</a></li>
+              <li class="active"><a href="{% url 'main:about' %}">UserPage</a></li>
+              <li><a href="{% url 'main:contact' %}">Contact</a></li>
+              <li><a href="login.html">LOGOUT</a></li>
+            </ul>
             </nav>
           </div>
           <div class="icons">
-            <a href="#" class="site-menu-toggle js-menu-toggle ml-3 d-inline-block d-lg-none"><span
-                class="icon-menu"></span></a>
+            <a href="#" class="site-menu-toggle js-menu-toggle ml-3 d-inline-block d-lg-none"><span class="icon-menu"></span></a>
           </div>
         </div>
       </div>
-    </div> 
-
-<!--네비게이션 END -->
-
-    {% comment %} <div class="jumbotron jumbotron-fluid">
-      <div class="container">
-        <h1 class="display-4" style="color:black;">UserPage</h1>
-        <p class="lead" style="color:black;">사용자의 정보를 보여주는 페이지입니다.</p>
-      </div>
-    </div> {% endcomment %}
-
+    </div>
+    <!--네비게이션 END -->
     <div class="bg-light py-3">
       <div class="container">
         <div class="row">
           <div class="col-md-12 mb-0">
-            <a href="{% url 'main:index' %}"><span style="color:#86DACA">Home</span></a> <span class="mx-2 mb-0">/</span>
+            <a href="{% url 'main:index' %}"><span style="color:#86DACA">Home</span></a><span class="mx-2 mb-0">/</span>
             <strong class="text-black">UserPage</strong>
           </div>
         </div>
       </div>
     </div>
-    
-    <div class="site-section bg-light custom-border-bottom" data-aos="fade">
+ 
       <div class="container">
         <div class="row justify-content-center mb-5">
           <div class="col-md-7 site-section-heading text-center pt-4">
@@ -136,47 +123,14 @@
                 <div class="block-38-header">
                   <img src='{%static "images/person_1.jpg" %}' alt="Image placeholder" class="mb-4">
                   <h3 class="block-38-heading h4">user_name님</h3>
-                  <p class="block-38-subheading" style="text-align:center; padding-top: 10px;">user_id</p>
+                  <p class="block-38-subheading" style="text-align:center; padding-top: 10px;">
+                    user_id
+                  </p>
                 </div>
               </div>
             </div>
           </div>
-          {% comment %} <div class="col-md-2 col-lg-2 mb-2">
-            <div class="block-38 text-center">
-              <div class="block-38-img">
-                <div class="cont">
-                  <p><label>나이</label></p>
-                </div>
-                <div class="cont">
-                  <p><label>성별</label></p>
-                </div>
-                <div class="cont">
-                  <p><label>핸드폰 번호</label></p>
-                </div>
-                <div class="cont">
-                  <p><label>환자와의 관계</label></p>
-                </div> 
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3 col-lg-3 mb-2">
-            <div class="block-38 text-center">
-              <div class="block-38-img">
-                <div class="cont">
-                  <p><input type="text" value="age-60"></p>
-                </div>
-                <div class="cont">
-                  <p><input type="text" value="gender-male/femal"></p>
-                </div>
-                <div class="cont">
-                  <p><input type="text" value="phone- 010-****-****"></p>
-                </div>
-                <div class="cont">
-                  <p><input type="text" value="relation "></p>
-                </div> 
-              </div>
-            </div>
-          </div> {% endcomment %}
+
           <div class="col-md-6">
             <div class="card mb-4">
               <div class="card-body">
@@ -185,7 +139,7 @@
                     <h6 class="mb-1">나이</h6>
                   </div>
                   <div class="col-sm-9 text-secondary">
-                    60
+                     60
                   </div>
                 </div>
                 <hr>
@@ -194,7 +148,7 @@
                     <h6 class="mb-1">성별</h6>
                   </div>
                   <div class="col-sm-9 text-secondary">
-                    female
+                     female
                   </div>
                 </div>
                 <hr>
@@ -203,7 +157,7 @@
                     <h6 class="mb-1">핸드폰 번호</h6>
                   </div>
                   <div class="col-sm-9 text-secondary">
-                    010-****-****
+                     010-****-****
                   </div>
                 </div>
                 <hr>
@@ -212,189 +166,59 @@
                     <h6 class="mb-1">환자와의 관계</h6>
                   </div>
                   <div class="col-sm-9 text-secondary">
-                    Parents
+                     Parents
                   </div>
                 </div>
+                </div>
               </div>
             </div>
           </div>
-          {% comment %} <div class="col-md-6 col-lg-6 mb-5">
-            <div class="block-38 text-center">
-              <div class="block-38-img">
-                <div class="cont">
-                  <p><label>나이</label><input type="text" value="age-60"></p>
+        </div>
+          <footer class="site-footer" style="background-color:#c6eee6; padding:3em 0;">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-6 col-lg-3 mb-4 mb-lg-0" style="margin-right:120px;">
+                <div class="block-7">
+                  <h3 class="footer-heading mb-4">About Us</h3>
+                  <p style="color:#25262a;">
+                    'MEDIPENSER'는 치매나 지적장애인 등 보호가 필요한 사람들에게 올바른 약을 복용할 수 있도록 얼굴인식을 기반으로 한 AI 서비스입니다.
+                  </p>
                 </div>
-                <div class="cont">
-                  <p><label>성별</label> <input type="text" value="gender-male/femal"></p>
+              </div>
+              <div class="col-lg-3 mx-auto mb-5 mb-lg-0">
+                <h3 class="footer-heading mb-4">Quick Links</h3>
+                <ul class="list-unstyled">
+                  <li><a href="{% url 'cam:show' %}">CAMERA</a></li>
+                  <li><a href="{% url 'main:about' %}">USERPAGE</a></li>
+                  <li><a href="{% url 'main:contact' %}">CONTACT</a></li>
+                </ul>
+              </div>
+              <div class="col-md-6 col-lg-3">
+                <div class="block-5 mb-5">
+                  <h3 class="footer-heading mb-4">Contact Info</h3>
+                  <ul class="list-unstyled">
+                    <li class="address">㈜케이티 대전 서구 탄방동 649 </li>
+                    <li class="phone"><a href="tel://0421234567">042 123 4567</a></li>
+                    <li class="email">medipenser@MEDIPENSER.com</li>
+                  </ul>
                 </div>
-                <div class="cont">
-                  <p><label>핸드폰 번호</label> <input type="text" value="phone- 010-****-****"></p>
-                </div>
-                <div class="cont">
-                  <p><label>환자와의 관계</label> <input type="text" value="relation "></p>
-                </div> 
+              </div>
+            </div>
+            <div class="row pt-5 mt-5 text-center">
+              <div class="col-md-12">
+                <p>
+                  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                   Copyright &copy;
+                  <script>document.write(new Date().getFullYear());</script>
+                   MEDIPENSER<i class="icon-heart" aria-hidden="true"></i>
+                  <!-- by <a href="https://colorlib.com" target="_blank"
+                  class="text-primary">Colorlib</a>. Downloaded from <a href="https://themeslab.org/" target="_blank">Themeslab</a> -->
+                  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                </p>
               </div>
             </div>
           </div>
-        </div> {% endcomment %}
-
-
-    
-      
-{% comment %} 
-    <div class="site-section bg-light custom-border-bottom" data-aos="fade">
-      <div class="container">
-        <div class="row mb-5">
-          <div class="col-md-6">
-            <div class="block-16">
-              <figure>
-                <img src="{%static 'images/bg_1.jpg' %}" alt="Image placeholder" class="img-fluid rounded">
-                <a href="https://vimeo.com/channels/staffpicks/93951774" class="play-button popup-vimeo"><span
-                    class="icon-play"></span></a>
-    
-              </figure>
-            </div>
-          </div>
-          <div class="col-md-1"></div>
-          <div class="col-md-5">
-    
-    
-            <div class="site-section-heading pt-3 mb-4">
-              <h2 class="text-black">How We Started</h2>
-            </div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius repellat, dicta at laboriosam, nemo
-              exercitationem itaque eveniet architecto cumque, deleniti commodi molestias repellendus quos sequi hic fugiat
-              asperiores illum. Atque, in, fuga excepturi corrupti error corporis aliquam unde nostrum quas.</p>
-            <p>Accusantium dolor ratione maiores est deleniti nihil? Dignissimos est, sunt nulla illum autem in, quibusdam
-              cumque recusandae, laudantium minima repellendus.</p>
-    
-          </div>
-        </div>
-      </div>
-    </div>
-
-    
-
-    <div class="site-section bg-light custom-border-bottom" data-aos="fade">
-      <div class="container">
-        <div class="row mb-5">
-          <div class="col-md-6 order-md-2">
-            <div class="block-16">
-              <figure>
-                <img src="{%static 'images/hero_1.jpg' %}" alt="Image placeholder" class="img-fluid rounded">
-                <a href="https://vimeo.com/channels/staffpicks/93951774" class="play-button popup-vimeo"><span
-                    class="icon-play"></span></a>
-    
-              </figure>
-            </div>
-          </div>
-          <div class="col-md-5 mr-auto">
-    
-    
-            <div class="site-section-heading pt-3 mb-4">
-              <h2 class="text-black">We Are Trusted Company</h2>
-            </div>
-            <p class="text-black">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius repellat, dicta at laboriosam, nemo
-              exercitationem itaque eveniet architecto cumque, deleniti commodi molestias repellendus quos sequi hic fugiat
-              asperiores illum. Atque, in, fuga excepturi corrupti error corporis aliquam unde nostrum quas.</p>
-            <p class="text-black">Accusantium dolor ratione maiores est deleniti nihil? Dignissimos est, sunt nulla illum autem in, quibusdam
-              cumque recusandae, laudantium minima repellendus.</p>
-    
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    <div class="site-section site-section-sm site-blocks-1 border-0" data-aos="fade">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6 col-lg-4 d-lg-flex mb-4 mb-lg-0 pl-4" data-aos="fade-up" data-aos-delay="">
-            <div class="icon mr-4 align-self-start">
-              <span class="icon-truck text-primary"></span>
-            </div>
-            <div class="text">
-              <h2>Free Shipping</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus at iaculis quam. Integer accumsan
-                tincidunt fringilla.</p>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-4 d-lg-flex mb-4 mb-lg-0 pl-4" data-aos="fade-up" data-aos-delay="100">
-            <div class="icon mr-4 align-self-start">
-              <span class="icon-refresh2 text-primary"></span>
-            </div>
-            <div class="text">
-              <h2>Free Returns</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus at iaculis quam. Integer accumsan
-                tincidunt fringilla.</p>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-4 d-lg-flex mb-4 mb-lg-0 pl-4" data-aos="fade-up" data-aos-delay="200">
-            <div class="icon mr-4 align-self-start">
-              <span class="icon-help text-primary"></span>
-            </div>
-            <div class="text">
-              <h2>Customer Support</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus at iaculis quam. Integer accumsan
-                tincidunt fringilla.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div> {% endcomment %}
-    
-
-    <footer class="site-footer" style="background-color:#c6eee6; padding:3em 0;">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6 col-lg-3 mb-4 mb-lg-0" style="margin-right:120px;">
-
-            <div class="block-7">
-              <h3 class="footer-heading mb-4">About Us</h3>
-              <p style="color:#25262a;">'MEDIPENSER'는 치매나 지적장애인 등 보호가 필요한
-                사람들에게 올바른 약을 복용할 수 있도록 얼굴인식을 기반으로 한 AI 서비스입니다.
-              </p>
-            </div>
-
-          </div>
-          <div class="col-lg-3 mx-auto mb-5 mb-lg-0">
-            <h3 class="footer-heading mb-4">Quick Links</h3>
-            <ul class="list-unstyled">
-              <li><a href="{% url 'cam:show' %}">CAMERA</a></li>
-              <li><a href="{% url 'main:about' %}">USERPAGE</a></li>
-              <li><a href="{% url 'main:contact' %}">CONTACT</a></li>
-              
-            </ul>
-          </div>
-
-          <div class="col-md-6 col-lg-3">
-            <div class="block-5 mb-5">
-              <h3 class="footer-heading mb-4">Contact Info</h3>
-              <ul class="list-unstyled">
-                <li class="address">㈜케이티 대전 서구 탄방동 649 </li>
-                <li class="phone"><a href="tel://0421234567">042 123 4567</a></li>
-                <li class="email">medipenser@MEDIPENSER.com</li>
-              </ul>
-            </div>
-
-
-          </div>
-        </div>
-        <div class="row pt-5 mt-5 text-center">
-          <div class="col-md-12">
-            <p>
-              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-              Copyright &copy;
-              <script>document.write(new Date().getFullYear());</script> MEDIPENSER<i class="icon-heart" aria-hidden="true"></i> 
-             <!-- by <a href="https://colorlib.com" target="_blank"
-                class="text-primary">Colorlib</a>. Downloaded from <a href="https://themeslab.org/" target="_blank">Themeslab</a> -->
-              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            </p>
-          </div>
-
-        </div>
-      </div>
-    </footer>
-  </div>
+          </footer>
 
   <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
   <script src="{% static 'js/jquery-ui.js' %}"></script>
