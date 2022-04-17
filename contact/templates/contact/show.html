@@ -1,0 +1,184 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}">
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Search</title>
+    <meta charset="utf-8">
+   
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/jinho.css"> 
+    <link rel="stylesheet" href="/static/css/style.css"> 
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="/static/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="/static/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="/static/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="/static/css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="/static/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="/static/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="/static/css/style_rank.css" type="text/css">
+</head>
+
+<body>
+
+       <!-- Header Section Begin -->
+       <header class="header">
+        <div class="header__top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="header__top__left">
+                            <ul>
+                             
+                                
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="header__top__right">
+                            <div class="header__top__right__social">
+                                <a href="https://instagram.com/aivlestory?utm_medium=copy_link "target='_blank' ><i class="fa fa-instagram fa-2x" aria-hidden= "true"></i></a>
+                                <a href="https://classum.com/"target='_blank' ><i class="fa fa-copyright fa-2x" aria-hidden="true"></i></a>
+                                <a href="https://blog.naver.com/porory_rei"target='_blank' ><i class="fa fa-bold fa-2x" aria-hidden="true"></i></a>
+                                <a href="https://ktedu.kt.com/aivle/about.html"target='_blank' ><i class="fa fa-home fa-2x" aria-hidden="true"></i></a>
+                            </div>
+                            <div class="header__top__right__language">
+                                <img src="img/language.png"alt="">
+                                <div>AI 개발자</div>
+                                <span class="arrow_carrot-down"></span>
+                                <ul>
+                                    <li><a href="{% url 'rank:rank1_100' %}">AI 개발자</a></li>
+                                    <li><a href="{% url 'rank:rank2_100' %}">DX 컨설턴트</a></li>
+                                </ul>
+                            </div>
+                
+                                {% if user.is_authenticated %}
+                                  
+                                <div class="header__top__right__auth">
+                                    <a href="{% url 'userapp:login' %}"><i class="fa fa-user"></i> logout</a>
+                                </div> 
+                                
+                               
+                                
+  
+                                {% else %}
+                                <div class="header__top__right__auth">
+                                    <a href="{% url 'userapp:login' %}"><i class="fa fa-user"></i> Login</a>
+                                </div>
+                                {% endif %}
+  
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="header__logo">
+                        <a href="{% url 'main:index' %}"><img src="/static/img/aivle.PNG" class="mt-2"></a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <nav class="header__menu">
+                        <ul>
+                            <li class="active"><a href="{% url 'main:index' %}">홈</a></li>
+                            <li><a href="./shop-grid.html">채팅</a></li>
+                            <li><a href="#">커뮤니티</a>
+                                <ul class="header__menu__dropdown">
+                                   
+                                    <li><a href="{% url 'board:index' %}">Q&A</a></li>
+                                    <li><a href="{% url 'freeboard:index' %}">자유게시판</a></li>
+                                    <li><a href="{% url 'blog:index' %}">정보방</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="{% url 'rank:rank1_100' %}">랭킹 TOP 100</a></li>
+                              <li><a href="">학습</a>
+                                  <ul class="header__menu__dropdown">
+                                      <li><a href="{% url 'study:studying' %}">AIVLE 강의</a></li>
+                                      <li><a href="{% url 'youtubeboard:index' %}">YOUTUBE 강의</a></li>   
+                                  
+                                  </ul>   
+                          
+                              
+                          </li>
+                            <li><a href="/quiz/main">퀴즈</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-lg-3">
+                    <div class="header__cart">
+                        
+                          <a><i class="fa fa-user-circle fa-2x" aria-hidden= "true"></i></a>
+                          <b>　{{user.username}}님</b>　 <b>score:</b> <span>{{user.score}}</span>
+                       
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="humberger__open">
+                <i class="fa fa-bars"></i>
+            </div>
+        </div>
+    </header>
+    <!-- Header Section End -->
+<div style="text-align:center">
+    <h3 class="heading-section">"<mark>{{search}}</mark> "포함된 검색결과입니다.</h3>
+    <br>
+ </div>
+
+<div class="container">
+    <table class="board-table">
+        <thead class="thead-primary">
+            <tr>
+                    <b><th scope="col" class="th-num">번호</th>
+                    <th scope="col" class="th-title">제목</th>
+                    <th scope="col" class="th-date">작성자</th>
+                    <th scope="col" class="th-date">작성일지</th>
+            </tr>
+        </thead>
+        <tbody>
+                {% for item in data %}
+                <tr>
+                    <td> {{ item.id }}</td>
+                    <td>
+                    <a href="{% url 'board:detail' item.id %}">
+                        {{ item.subject }}
+                    </a>
+                    </td>   
+                    <td> {{item.username}}</td>
+                    <td>{{item.pub_date}}</td>    
+                   
+                </tr>   
+                {% endfor %}
+            <tr>   
+        </tr>
+        </tbody>
+        </table>
+        <div style='text-align:center;'>
+            <ul class='pagination'>
+                {% for i in page_range %}
+                <li>
+                <a href='{% url "board:index" %}?page={{ i }}'>
+                    {{ i }}
+                </a>
+                </li>
+                {% endfor %}
+                </ul>
+            </div>
+        
+        <br><br>
+    </div>
+
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/popper.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/main.js"></script>
+</body>
