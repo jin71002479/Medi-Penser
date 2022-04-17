@@ -6,6 +6,99 @@
 
 <title>Contact &mdash; List </title>
 
+
+<div class="container">
+
+  <br><br>
+  <table class="board-table">
+      
+
+          <div id="board-search">
+              <div class="container">
+                  <div class="search-window">
+                      <form method="post" action="{% url 'main:search' %}">
+                          {% csrf_token %}
+                          <div class="search-wrap">
+                              <input type="text" name="search" placeholder="검색어를 입력해주세요." value="">
+                              <button type="submit" class="btn btn-dark">검색</button>
+                          </div>
+                      </form>
+                  </div>
+              </div>
+          </div>
+          
+          
+          <div class="d-grid gap-2 d-md-block">
+    
+              <a href="{% url 'board:upload3' %}" class="btn btn-info float-left">
+                 <h4 style="color: #FFFFFF;"              
+                 ><b>질문하기 </b></h4>
+              </a>
+              <br>
+         
+      </div>
+      <br>
+      <thead class="thead-primary">
+          <tr>
+              
+              <b><th scope="col" class="th-num">번호</th>
+              <th scope="col" class="th-title">제목</th>
+              <th scope="col" class="th-date">작성자</th>
+              <th scope="col" class="th-date">작성일지</th>
+              
+          </tr>
+      </thead>
+      <tbody>
+          {% if info %}
+        
+              {% for question in info %}
+              <tr>
+                 
+                  <td>{{ forloop.revcounter }}</td>
+                  <td>
+                      <a href="{% url 'board:detail' question.id %}">
+                          {{ question.subject }}
+                      </a>
+                  </td>
+                  <td>
+                      {{question.username}}
+                  </td>
+                  <td>{{ question.pub_date }}</td>
+              </tr>
+              
+          {% endfor %}
+          {% else %}
+          <tr>
+              <td colspan="3">질문이 없습니다.</td>
+          </tr>
+          {% endif %}
+      </tbody>
+      </table>
+  </div>
+  <br>
+      <div class="d-grid gap-2 col-2 mx-auto">
+      <div style='text-align:right;'>
+          <ul class='pagination'>
+              {% for i in page_range %}
+              <li class="page-item">
+              <a class="page-link" href='{% url "main:contact" %}?page={{ i }}'>
+                  {{ i }}
+              </a>
+              </li>
+              
+              {% endfor %}
+              </ul>
+          </div>
+          </div>
+         
+      </div>
+      <br><br>
+  </div>
+  <script src="/static/js/jquery.min.js"></script>
+  <script src="/static/js/popper.js"></script>
+  <script src="/static/js/bootstrap.min.js"></script>
+  <script src="/static/js/main.js"></script>
+
 {% endblock %}
 <!-- 기본 템플릿 안에 삽입될 내용 End -->
 
