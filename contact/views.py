@@ -5,7 +5,8 @@ from django.utils import timezone
 from django.core.paginator import Paginator
 from django.views.generic.detail import SingleObjectMixin
 from django.core.files.storage import FileSystemStorage
-from django.contrib.auth.decorators import login_required #로그인여부
+from django.contrib.auth.decorators import login_required
+
 
 def contact(request):
     now_page = request.GET.get('page', 1)

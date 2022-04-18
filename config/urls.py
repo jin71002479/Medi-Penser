@@ -21,4 +21,5 @@ urlpatterns = [
     path('cam/', include('cam.urls')),
     path('main/', include('main.urls')),
     path('contact/', include('contact.urls')),
+    path('member/', include('member.urls')),
 ]

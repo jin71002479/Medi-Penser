@@ -1,0 +1,14 @@
+<br>
+    {% if user.is_authenticated %}
+        로그인성공
+        {{  user.username }} 님 반갑습니다.
+    <a href = "{%url 'member:logout'%}">로그아웃</a>
+    {% else %}
+    <form method="post" action="{% url 'member:login' %}">
+        {% csrf_token %}
+        아이디 : <input type="text" name="username"><br>
+        비밀번호 : <input type="password" name="password"><br>
+        <input type="submit" value="로그인">
+        </form>
+    <p>현재 상태 : Guest</p>
+    {% endif %}
