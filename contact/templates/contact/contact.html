@@ -10,7 +10,7 @@
 <div class="container">
 
   <br><br>
-  <table class="board-table">
+  <table class="table table-striped">
   
       <thead class="thead-primary">
           <tr>
@@ -43,7 +43,7 @@
           {% endfor %}
           {% else %}
           <tr>
-              <td colspan="3">질문이 없습니다.</td>
+              <td colspan="3">게시글이 없습니다.</td>
           </tr>
           {% endif %}
       </tbody>
@@ -68,10 +68,6 @@
       </div>
       <br><br>
   </div>
-  <script src="/static/js/jquery.min.js"></script>
-  <script src="/static/js/popper.js"></script>
-  <script src="/static/js/bootstrap.min.js"></script>
-  <script src="/static/js/main.js"></script>
 
 {% endblock %}
 <!-- 기본 템플릿 안에 삽입될 내용 End -->
