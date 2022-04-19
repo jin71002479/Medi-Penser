@@ -1,67 +1,105 @@
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<div class="container my-3">
-    <div class="row my-3">
-        <div class="col-4">
-            <h4>계정생성</h4>
-        </div>
-        <div class="col-8 text-right">
-            <span>또는 <a href="{% url 'member:login' %}">로그인 하세요.</a></span>
-        </div>
-    </div>
-    <form method="post" class="post-form">
-        {% csrf_token %}
+<!DOCTYPE html>
+<html lang="ko">
 
-        {% include "form_errors.html" %}
-        
-        <div class="form-group">
-            <label for="username">아이디(Id)</label>
-            <input type="text" class="form-control" name="username" id="usermane"
-                value="{{ form.username.value | default_if_none:'' }}">
-        </div>
-        <div class="form-group">
-            <label for="password">비밀번호(Password)</label>
-            <input type="password" class="form-control" name="password" id="password"
-                value="{{ form.password.value | default_if_none:'' }}">
-        </div>
-        <div class="form-group">
-            <label for="password2">비밀번호(Password) 확인</label>
-            <input type="password2" class="form-control" name="password2" id="password2"
-                value="{{ form.password2.value | default_if_none:'' }}">
-        </div>
-        <div class="form-group">
-            <label for="fullname">성함(Name)</label>
-            <input type="text" class="form-control" name="fullname" id="fullname"
-                value="{{ form.fullname.value | default_if_none:'' }}">
-        <div>
-        <div class="form-group">
-            <label for="phone">전화번호(Phone)</label>
-            <input type="phone" class="form-control" name="phone" id="phone"
-                value="{{ form.phone.value | default_if_none:'' }}">
-        <div>
-        <div class="form-group">
-            <label for="email">이메일(email)</label>
-            <input type="email" class="form-control" name="email" id="email"
-                value="{{ form.email.value | default_if_none:'' }}">
-        </div>
-        <div class="form-group">
-            <label for="age">나이(age)</label>
-            <input type="age" class="form-control" name="age" id="age"
-                value="{{ form.age.value | default_if_none:'' }}">
-        <div>
-            <label for="age">성별(gender)</label>
-            <div>
-                <input type = "checkbox" name = "gender" value = "남">남</input>
-                <input type = "checkbox" name = "gender" value = "여">여</input>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>sign-up</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200&display=swap');
+    body {
+      min-height: 100vh;
+      font-family: 'Noto Sans KR', sans-serif;
+      background: -webkit-gradient(linear, left bottom, right top, from(#bad3c0), to(#CFEBEA));
+      /* background: -webkit-linear-gradient(bottom left, #bad3c0 0%, #CFEBEA 100%);
+      background: -moz-linear-gradient(bottom left, #bad3c0 0%, #CFEBEA 100%);
+      background: -o-linear-gradient(bottom left, #bad3c0 0%, #CFEBEA 100%);
+      background: linear-gradient(to top right, #bad3c0 0%, #CFEBEA 100%); */
+    }
+
+    .input-form {
+      max-width: 680px;
+
+      margin-top: 80px;
+      padding: 32px;
+
+      background: #fff;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      border-radius: 10px;
+      -webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+      -moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+      box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
+    }
+
+    #btn-1 {
+      border:none;
+    }
+
+    p {
+      line-height: 50%;
+    }
+  </style>
+</head>
+
+<body>
+  <form method="post" class="post-form">
+    {% csrf_token %}
+  <div class="container">
+    <div class="input-form-backgroud row">
+      <div class="input-form col-md-12 mx-auto">
+        <h4 class="mb-3" style="text-align: center;">회원가입</h4>
+        <form class="validation-form" novalidate>
+          <div class="row">
+            <div class="col-md-12 mb-3">
+              <label for="fullname">이름</label>
+              <input type="text" class="form-control" id="fullname" name = "fullname" placeholder="이름을 입력해주세요" value="" required>
             </div>
-        <div>   
-         <div class="form-group">
-            <label for="parmacy">자주가는 약국(parmacy)</label>
-            <input type="parmacy" class="form-control" name="parmacy" id="parmacy"
-                value="{{ form.parmacy.value | default_if_none:'' }}">
-        <div> 
+          </div>
 
-        <div class="form-row">
-            <div class="form-group col-md-3">
+          <div class="mb-3">
+            <label for="username">ID</label>
+            <input type="text" class="form-control" id="username" name = "username"placeholder="ID를 입력해주세요" required>
+            
+          </div>
+
+          <div class="mb-3">
+            <label for="password">비밀번호</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="비밀번호를 입력해주세요" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="password2">비밀번호(확인)</label>
+            <input type="password2" class="form-control" id="password2" name="password2" placeholder="비밀번호를 입력해주세요" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="phone">전화번호</label>
+            <input type="phone" class="form-control" id="phone" name="phone" placeholder="전화번호를 입력해주세요" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="age">나이</label> 
+            <input type="age" class="form-control" id="age" name="age" ageplaceholder="나이를 입력해주세요" value="" required>
+          </div>
+
+         <div class="mb-3">
+            <label for="email">이메일</label> 
+            <input type="email" class="form-control" id="email" name="email" ageplaceholder="이메일를 입력해주세요" value="" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="gender">성별</label> 
+                    <label><input type="radio" name="gender" id="gender" value="male">남성</label>       <label><input type="radio" name="gender" id="gender" value="femal">여성</label>
+          </div>
+
+          <div class="mb-3">
             <label for="relation" class="text-black">환자와의 관계(Relation) <span class="text-danger" name="relation" id="relation"></span></label>
             
     
@@ -73,42 +111,48 @@
                 <option value = "형제">형제</option>
                 <option value = "간병인">간병인</option>
                 <option value = "친인척">친인척</option>
+          </div>
 
-                {% comment %} {% if user.relation == "배우자" %}
-                <option value = "배우자" selected>배우자</option>
-                {% else%}
-                <option value = "배우자">배우자</option>
-                {% endif %}
-                
-                {% if user.relation == "자녀" %}
-                <option value = "자녀" selected>배우자</option>
-                {% else%}
-                <option value = "자녀">자녀</option>
-                {% endif %}
+          <div class="mb-3">
+            <label for="parmacy">주 이용 병원/약국(선택)</label>
+            <input type="parmacy" class="form-control" id="parmacy" name = "parmacy" placeholder="주로 방문하는 약국이나 병원을 입력해주세요">
+          </div>
 
-                {% if user.relation == "형제" %}
-                <option value = "형제" selected>형제</option>
-                {% else%}
-                <option value = "형제">형제</option>
-                {% endif %}
-
-                {% if user.relation == "간병인" %}
-                <option value = "간병인" selected>간병인</option>
-                {% else%}
-                <option value = "간병인">간병인</option>
-                {% endif %}
-
-                {% if user.relation == "친인척" %}
-                <option value = "친인척" selected>친인척</option>
-                {% else%}
-                <option value = "친인척">친인척</option>
-                {% endif %} {% endcomment %}
-
-                
-                </select>
-              </div>
-        </div>
-        <button type="submit" class="btn btn-primary">생성하기</button>
-      </form>
+          <hr class="mb-4">
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="aggrement" required>
+            <label class="custom-control-label" for="aggrement">개인정보 수집 및 이용에 동의합니다.</label>
+          </div>
+          <div class="mb-4"></div>
+          <div class="mb-3" style="float:left; margin-right:30px">
+            <button id="btn-1" class="btn btn-primary btn-lg btn-block" type="submit" style="background-color: #b0ddb6; width:150px;" >가입 완료</button></div>
+          <div class="mb-3" style="float:left;">
+            <button id="btn-1" class="btn btn-primary btn-lg btn-block" type="submit" style="background-color: rgba(117, 117, 117, 0.5); width:150px;">취소</button></div>
+        </form>
+      </div>
     </div>
-    
+
+
+    <footer class="my-3 text-center text-small">
+      <p class="mb-1">&copy; Medicine Dispenser</p>
+    </footer>
+  </div>
+  <script>
+    window.addEventListener('load', () => {
+      const forms = document.getElementsByClassName('validation-form');
+
+      Array.prototype.filter.call(forms, (form) => {
+        form.addEventListener('submit', function (event) {
+          if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+
+          form.classList.add('was-validated');
+        }, false);
+      });
+    }, false);
+  </script>
+</body>
+
+</html>

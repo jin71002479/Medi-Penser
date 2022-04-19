@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+      
+
+<!-- 기본 템플릿 안에 삽입될 내용 Start -->
+{% block content %}
+
+<div class="container my-3">
+    <br>
+  
+    <br>
+
+    <h3 class="border-bottom py-2">  <img src="/static/images/q.jpg"> <b>{{ question.subject }}</b>
+        <br></h3>
+     
+        <div class="card shadow mb-4" >
+            <div class="card-header py-3"  >
+                <b style='color: #000000'>
+                      작성자 ID : <b>{{question.username}}</b>
+            </div>
+            
+                <div class="card-text" style="white-space: pre-line;">
+                    　{{ question.content }}
+                </div>
+                <div class="card-body">
+                <div class="d-flex justify-content-end">
+                    <div class="badge badge-light p-2">
+    
+    
+                        {{ question.pub_date }}
+                        <br><br>
+                   
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+       
+    <br>
+   <h4 class="border-bottom my-2 py-2">
+        <div><img src="/static/images/A.png"><b>
+            등록된 답변</div>
+    </b></h4>
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary"> <span style="background: linear-gradient(to top, #FFE400 30%, transparent 70%)">{{question.answer_set.count}}개</span>의 답변</h6>
+        </div>
+        <div class="card-body">
+        
+            <div>
+                
+            </div>
+
+    {% for answer in question.answer_set.all %}
+    <div class="card shadow mb-4">
+        <div class="card-header py-3" >
+            <b style='color: #FF1244'>
+                작성자 : {{ answer.username }} </b>
+                <a href="{% url 'contact:answer_delete' answer.id %}" class="btn btn-primary" style="float:right"onClick="alert('삭제되었습니다.')">삭제</a>
+        </div>
+        
+            <div class="card-text" style="white-space: pre-line;">
+                　 {{ answer.content }}
+            </div>
+            <div class="card-body">
+            <div class="d-flex justify-content-end">
+                <div class="badge badge-light p-2">
+
+
+                    {{ answer.create_date }}
+                    <br><br>
+               
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    
+    
+    <form action="{% url 'contact:answer_create' question.id %}" method="post" class="my-3">
+        {% csrf_token %}
+
+        <!-- 오류표시 Start -->
+        {% if form.errors %}
+        <div class="alert alert-danger" role="alert">
+            {% for field in form %}
+            {% if field.errors %}
+            <strong>{{ field.label }}</strong>
+            {{ field.errors }}
+            {% endif %}
+            {% endfor %}
+        </div>
+        {% endif %}
+        <!-- 오류표시 End -->
+
+        <div class="form-group">
+            <textarea name="content" id="content" class="form-control" rows="7" placeholder="내용을 입력해주세요"></textarea>
+        </div>
+        <div style='text-align:right;'>
+            <input type="submit" value="답변등록" class="btn btn-primary">
+            <a href="{% url 'contact:list' %}" class="btn btn-primary">
+                목록으로
+            </a>
+            <a href="{% url 'contact:download' question.id %}" class="btn btn-primary">다운로드</a>           
+            <a href="{% url 'contact:update' question.id %}" class="btn btn-primary">수정</a>
+            <a href="{% url 'contact:delete' question.id %}" class="btn btn-primary">삭제</a>
+        </div>
+    </form>
+    <div>
+       
+        </form>
+       
+     </div>
+    <br><br>
+    </div>
+    {% endblock %}
+    <!-- 기본 템플릿 안에 삽입될 내용 End -->
+
+</body>

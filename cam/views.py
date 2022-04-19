@@ -1,4 +1,4 @@
-import cv2
+import cv2, datetime
 from django.http import HttpResponse
 from django.http.response import StreamingHttpResponse
 from django.template import loader
