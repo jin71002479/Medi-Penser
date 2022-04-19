@@ -33,13 +33,8 @@ AUTH_USER_MODEL = 'member.User'
 INSTALLED_APPS = [
     'cam',
     'main',
-<<<<<<< HEAD
-    'contact',
-    'member',
-=======
     'member',
     'contact',
->>>>>>> main
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

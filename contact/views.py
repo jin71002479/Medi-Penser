@@ -1,9 +1,6 @@
-<<<<<<< HEAD
 from config import settings
 import os
 
-=======
->>>>>>> main
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse, FileResponse
 from .models import Question, Answer
@@ -27,7 +24,6 @@ def contact(request):
     context = {'info': info,
         'page_range' : range(start_page, end_page + 1)
     }
-<<<<<<< HEAD
     return render(request, 'contact/contact.html', context)
 
 
@@ -166,6 +162,3 @@ def download(request,question_id):
                 return response
     else :  
         return render(request, 'board/delete.html')
-=======
-    return render(request, 'contact/contact.html', context)
->>>>>>> main

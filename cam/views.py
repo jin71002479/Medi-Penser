@@ -1,14 +1,8 @@
-<<<<<<< HEAD
-import cv2, datetime
-from django.http import HttpResponse
-=======
-
 from datetime import datetime
 from django.utils import timezone
 import os
 import threading
 import cv2
->>>>>>> main
 from django.http.response import StreamingHttpResponse
 from django.shortcuts import render
 from cam.models import Image
