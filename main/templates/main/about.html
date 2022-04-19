@@ -89,7 +89,7 @@
               <li><a href="{% url 'cam:show' %}">Camera</a></li>
               <li class="active"><a href="{% url 'main:about' %}">UserPage</a></li>
               <li><a href="{% url 'contact:list' %}">Contact</a></li>
-              <li><a href="login.html">LOGOUT</a></li>
+              <li><a href="{% url 'member:login' %}">LOGOUT</a></li>
             </ul>
             </nav>
           </div>
@@ -122,9 +122,9 @@
               <div class="block-38-img">
                 <div class="block-38-header">
                   <img src='{%static "images/person_1.jpg" %}' alt="Image placeholder" class="mb-4">
-                  <h3 class="block-38-heading h4">user_name님</h3>
+                  <h3 class="block-38-heading h4">{{ user.fullname }} 님</h3>
                   <p class="block-38-subheading" style="text-align:center; padding-top: 10px;">
-                    user_id
+                    ID : {{ user.username }}
                   </p>
                 </div>
               </div>
@@ -135,11 +135,11 @@
             <div class="card mb-4">
               <div class="card-body">
                 <div class="row">
-                  <div class="col-sm-4">
+                  <div class="col-sm-4">ㅣ
                     <h6 class="mb-1">나이</h6>
                   </div>
                   <div class="col-sm-9 text-secondary">
-                     60
+                    {{ user.age }}
                   </div>
                 </div>
                 <hr>
@@ -148,7 +148,7 @@
                     <h6 class="mb-1">성별</h6>
                   </div>
                   <div class="col-sm-9 text-secondary">
-                     female
+                    {{ user.gender }}
                   </div>
                 </div>
                 <hr>
@@ -157,7 +157,7 @@
                     <h6 class="mb-1">핸드폰 번호</h6>
                   </div>
                   <div class="col-sm-9 text-secondary">
-                     010-****-****
+                    {{ user.phone }}
                   </div>
                 </div>
                 <hr>
@@ -166,7 +166,7 @@
                     <h6 class="mb-1">환자와의 관계</h6>
                   </div>
                   <div class="col-sm-9 text-secondary">
-                     Parents
+                    {{ user.relation }}
                   </div>
                 </div>
                 </div>

@@ -108,10 +108,12 @@
           <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
             <div class="banner-wrap bg-primary h-100">
               <a href="{% url 'main:about' %}" class="h-100" style="background-color:#87C2E6">
-                <h5>UserPage</h5>
+                <h2><span style="color: white">UserPage</span></h2>
                 <p>
                   사용자 정보
-                  <strong>Lorem, ipsum dolor sit amet consectetur adipisicing.</strong>
+
+
+                  
                 </p>
               </a>
           </div>
@@ -119,20 +121,20 @@
           <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
             <div class="banner-wrap h-100" style="background-color:#E6CD7F">
               <a href="{% url 'cam:show' %}" class="h-100">
-                <h5>Camera</h5>
+                <h2><span style="color: white">Camera</span></h2>
                 <p>
-                  Amet sit amet dolor
-                  <strong>Lorem, ipsum dolor sit amet consectetur adipisicing.</strong>
+                  카메라 촬영
+                                 
                 </p>
               </a>
             </div>
           </div>
           <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
             <div class="banner-wrap bg-warning h-100">
-              <a href="#" class="h-100" style="background-color:#E6A49E">
-                <h5>Contact</h5>
+              <a href="{% url 'contact:list' %}" class="h-100" style="background-color:#E6A49E">
+                <h2><span style="color: white">Contact</span></h2>
                 <p>게시판
-                  <strong>~~</strong>
+                  <strong>           </strong>
                 </p>
               </a>
             </div>
@@ -142,7 +144,7 @@
       </div>
     </div>
 
-    <div class="site-section">
+    {% comment %} <div class="site-section">
       <div class="container">
         <div class="row">
           <div class="title-section text-center col-12">
@@ -201,7 +203,7 @@
       </div>
     </div>
 
-  
+   {% endcomment %}
     
 
     <footer class="site-footer" style="background-color:#c6eee6; padding:3em 0;">

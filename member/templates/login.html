@@ -95,9 +95,15 @@
     <section class="login-form">
         <h1>MEDIPENSER</h1>
         {% if user.is_authenticated %}
-        <form action="">
+        로그아웃 페이지   
+        <h3>{{user.username}} 님 정말 로그아웃 하시겠어요?</h3>
+        <div class="mb-3" style="float:left;">
+          <br><br>
+          <button id="btn-1" class="btn btn-primary btn-lg btn-block" type="button" onclick = "location.href= '{% url 'member:logout' %}'" style="background-color: rgba(117, 117, 117, 0.5); width:150px;">확인</button></div>
           {% else %}
+          <form method="post" action="{% url 'member:login' %}">
           {% csrf_token %}
+          
             <div class="int-area">
                 <input type="username" name="username" id="username"
                 autocomplete="off" required>

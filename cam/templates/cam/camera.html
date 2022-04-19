@@ -62,7 +62,11 @@
                 <li class="active"><a href="{% url 'cam:show' %}">Camera</a></li>
                 <li><a href="{% url 'main:about' %}">UserPage</a></li>
                 <li><a href="{% url 'contact:list' %}">Contact</a></li>
+<<<<<<< HEAD
                 <li><a href="login.html">Logout</a></li>
+=======
+                <li><a href="{% url 'member:login' %}">Logout</a></li>
+>>>>>>> main
               </ul>
             </nav>
           </div>
@@ -101,7 +105,11 @@
       
             </article><hr> 
               </br>
-            <p><a href="{% url 'main:index' %}" class="btn btn-light" style='background-color:#86DACA'>돌아가기</a></p>
+              <p>
+              <div class="btn_wrap">
+                <form action="{% url 'cam:show' %}" method='post'>
+                  {% csrf_token %}
+           <button type="submit" class="btn btn-light" style='background-color:#86DACA'>촬영하기</button></p>
           </div>
         </div>
       </div>

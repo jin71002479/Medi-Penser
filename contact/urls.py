@@ -1,14 +1,19 @@
 from django.conf import settings
 from django.urls import path
+<<<<<<< HEAD
 from contact.views import contact, search, detail
 from contact.views import update, delete, answer_create, answer_delete
 from contact.views import upload3, upload4, download
+=======
+from contact.views import contact
+>>>>>>> main
 from django.conf.urls.static import static
 
 app_name='contact'
 
 urlpatterns = [
     path('contact/', contact, name="list"),
+<<<<<<< HEAD
     path('search/', search, name='search'),
     path('<int:question_id>/', detail, name='detail'),
     path(
@@ -20,6 +25,8 @@ urlpatterns = [
     path('upload4/', upload4, name='upload4'),
     path('download/<int:question_id>/', download, name='download'),
     path('<int:answer_id>/answer_delete/', answer_delete, name="answer_delete"),
+=======
+>>>>>>> main
 ]+ static(
     settings.MEDIA_URL,
     document_root=settings.MEDIA_ROOT)
