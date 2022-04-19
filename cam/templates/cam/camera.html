@@ -61,8 +61,8 @@
                 <li><a href="{% url 'main:index' %}">Home</a></li>
                 <li class="active"><a href="{% url 'cam:show' %}">Camera</a></li>
                 <li><a href="{% url 'main:about' %}">UserPage</a></li>
-                <li><a href="{% url 'main:contact' %}">Contact</a></li>
-                <li><a href="login.html">Logout</a></li>
+                <li><a href="{% url 'contact:list' %}">Contact</a></li>
+                <li><a href="{% url 'member:login' %}">Logout</a></li>
               </ul>
             </nav>
           </div>
@@ -130,7 +130,7 @@
             <ul class="list-unstyled">
               <li><a href="{% url 'cam:show' %}">CAMERA</a></li>
               <li><a href="{% url 'main:about' %}">USERPAGE</a></li>
-              <li><a href="{% url 'main:contact' %}">CONTACT</a></li>
+              <li><a href="{% url 'contact:list' %}">CONTACT</a></li>
               
             </ul>
           </div>

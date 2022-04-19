@@ -75,8 +75,8 @@
                 <li class="active"><a href="{% url 'main:index' %}">Home</a></li>
                 <li><a href="{% url 'cam:show' %}">Camera</a></li>
                 <li><a href="{% url 'main:about' %}">UserPage</a></li>
-                <li><a href="{% url 'main:contact' %}">Contact</a></li>
-                <li><a href="login.html">Logout</a></li>
+                <li><a href="{% url 'contact:list' %}">Contact</a></li>
+                <li><a href="{% url 'member:login' %}">Logout</a></li>
               </ul>
             </nav>
           </div>
@@ -131,7 +131,7 @@
           </div>
           <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
             <div class="banner-wrap bg-warning h-100">
-              <a href="#" class="h-100" style="background-color:#E6A49E">
+              <a href="{% url 'contact:list' %}" class="h-100" style="background-color:#E6A49E">
                 <h2><span style="color: white">Contact</span></h2>
                 <p>게시판
                   <strong>           </strong>
@@ -224,7 +224,7 @@
             <ul class="list-unstyled">
               <li><a href="{% url 'cam:show' %}">CAMERA</a></li>
               <li><a href="{% url 'main:about' %}">USERPAGE</a></li>
-              <li><a href="{% url 'main:contact' %}">CONTACT</a></li>
+              <li><a href="{% url 'contact:list' %}">CONTACT</a></li>
               
             </ul>
           </div>
