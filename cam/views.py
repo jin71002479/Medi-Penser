@@ -4,10 +4,8 @@ from django.utils import timezone
 import os
 import threading
 import cv2
-from django.http import HttpResponse
 from django.http.response import StreamingHttpResponse
 from django.shortcuts import render
-from django.template import loader
 from cam.models import Image
 
 directory= os.getcwd()
