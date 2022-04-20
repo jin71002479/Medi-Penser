@@ -124,7 +124,7 @@ def update(request, question_id):
             question.pub_date = timezone.now()
             
             question.save()
-            return redirect('contact:index')
+            return redirect('contact:list')
         else:
             question=Question()
             return render(request, 'contact/update.html', {'question':question})
