@@ -13,7 +13,7 @@ filePath = directory + '/capture/'
 
 class VideoCamera(object):
 	def __init__(self):
-		self.video = cv2.VideoCapture(0)
+		self.video = cv2.VideoCapture(0 + cv2.CAP_DSHOW)
 		(self.grabbed, self.frame) = self.video.read()
 		threading.Thread(target=self.update, args=()).start()
 
@@ -40,22 +40,22 @@ class VideoCamera(object):
 
 
 
-cam = VideoCamera()
 
 def gen(camera):
 	while True:
-		frame = cam.get_frame()
+		frame = camera.get_frame()
 		yield(b'--frame\r\n'
 			b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
 
 def video(request):
     try:
-        return StreamingHttpResponse(gen(()), content_type="multipart/x-mixed-replace;boundary=frame")
+        return StreamingHttpResponse(gen(VideoCamera()), content_type="multipart/x-mixed-replace;boundary=frame")
     except:
         pass
 
 def camera_1(request):
+	cam1=VideoCamera()
 	if request.method == 'POST':
-		cam.take_frame()
+		cam1.take_frame()
 
 	return render(request, 'cam/camera.html')
