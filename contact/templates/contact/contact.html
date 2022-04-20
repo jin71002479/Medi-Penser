@@ -9,65 +9,93 @@
 
 <div class="container">
 
-  <br><br>
-  <table class="table table-striped">
-  
-      <thead class="thead-primary">
-          <tr>
-              
-              <b><th scope="col" class="th-num">번호</th>
-              <th scope="col" class="th-title">제목</th>
-              <th scope="col" class="th-date">작성자</th>
-              <th scope="col" class="th-date">작성일지</th>
-              
-          </tr>
-      </thead>
-      <tbody>
-          {% if info %}
-        
-              {% for question in info %}
-              <tr>
-                 
-                  <td>{{ forloop.revcounter }}</td>
-                  <td>
-                      <a href="">
-                          {{ question.subject }}
-                      </a>
-                  </td>
-                  <td>
-                      {{question.username}}
-                  </td>
-                  <td>{{ question.pub_date }}</td>
-              </tr>
-              
-          {% endfor %}
-          {% else %}
-          <tr>
-              <td colspan="3">게시글이 없습니다.</td>
-          </tr>
-          {% endif %}
-      </tbody>
-      </table>
-  </div>
-  <br>
-      <div class="d-grid gap-2 col-2 mx-auto">
-      <div style='text-align:right;'>
-          <ul class='pagination'>
-              {% for i in page_range %}
-              <li class="page-item">
-              <a class="page-link" href='{% url "contact:list" %}?page={{ i }}'>
-                  {{ i }}
-              </a>
-              </li>
-              
-              {% endfor %}
-              </ul>
-          </div>
-          </div>
-         
-      </div>
-      <br><br>
-  </div>
+    <br><br>
+    <table class="table table-striped">
+
+        <div id="board-search">
+            <div class="container">
+                <div class="search-window">
+                    <form method="post" action="{% url 'contact:search' %}">
+                        {% csrf_token %}
+                        <div class="search-wrap">
+                            <input type="text" name="search" placeholder="검색어를 입력해주세요." value="">
+                            <button type="submit" class="btn btn-dark">검색</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+        <br>
+
+        <thead class="thead-primary">
+            <tr>
+
+                <b>
+                    <th scope="col" class="th-num">번호</th>
+                    <th scope="col" class="th-title">제목</th>
+                    <th scope="col" class="th-date">작성자</th>
+                    <th scope="col" class="th-date">작성일지</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% if info %}
+
+            {% for question in info %}
+            <tr>
+
+                <td>{{ forloop.revcounter }}</td>
+                <td>
+                    <a href="{% url 'contact:detail' question.id %}">
+                        {{ question.subject }}
+                    </a>
+                </td>
+                <td>
+                    {{question.username}}
+                </td>
+                <td>{{ question.pub_date }}</td>
+            </tr>
+
+            {% endfor %}
+            {% else %}
+            <tr>
+                <td colspan="3">게시글이 없습니다.</td>
+            </tr>
+            {% endif %}
+        </tbody>
+    </table>
+
+    <div class="d-grid gap-2 d-md-block">
+
+        <a href="{% url 'contact:upload3' %}" class="btn btn-info btn-sm float-right">
+            <h6 style="color: #FFFFFF;">Contact</h6>
+        </a>
+</div>
+
+
+<br><br>
+<div class="d-grid gap-2 col-2 mx-auto">
+    <div style='text-align:right;'>
+        <ul class='pagination'>
+            {% for i in page_range %}
+            <li class="page-item">
+                <a class="page-link" href='{% url "contact:list" %}?page={{ i }}'>
+                    {{ i }}
+                </a>
+            </li>
+
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+</div>
+<br><br>
+</div>
 
 {% endblock %}
 <!-- 기본 템플릿 안에 삽입될 내용 End -->

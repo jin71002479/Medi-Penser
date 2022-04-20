@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+<!-- 기본 템플릿 안에 삽입될 내용 Start -->
+{% block content %}
+
+<div class="container">
+    <h5 class="my-3 border-bottom pb-2">질문등록</h5>
+    <form class="post-form my-3" action="{% url 'board:upload3' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <!-- 오류표시 Start -
+        {% if form.errors %}
+        <div class="alert alert-danger" role="alert">
+            {% for field in form %}
+                {% if field.errors %}
+                    <strong>{{ field.label }}</strong>
+                    {{ field.errors }}
+                {% endif %}
+            {% endfor %}
+        </div>
+        {% endif %}
+         오류표시 End -->
+        <div class="form-group">
+            <label for="subject">제목</label>
+            <input type="text" class="form-control" name="subject" value="{{ form.subject.value|default_if_none:'' }}">
+        </div>
+        <div class="form-group">
+            <label for="content">내용</label>
+
+
+            <textarea name="content" id="content" class="form-control" rows="10" placeholder="내용을 입력해주세요"></textarea>
+
+            <input type="file" name="file">
+
+        </div>
+        <div style='text-align:right;'>
+            <br><button type="submit" class="btn btn-primary">저장하기</button>
+            <a href="{% url 'board:index' %}" class="btn btn-primary">
+                목록으로
+            </a>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
+<!-- 기본 템플릿 안에 삽입될 내용 End -->
+
+</body>

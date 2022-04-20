@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+
+<!-- 기본 템플릿 안에 삽입될 내용 Start -->
+{% block content %}
+
+<title>Contact &mdash; Search </title>
+
+<div style="text-align:center">
+    <h3 class="heading-section">"<mark>{{search}}</mark> "포함된 검색결과입니다.</h3>
+    <br>
+ </div>
+
+<div class="container">
+    
+    <table class="board-table">
+        <thead class="thead-primary">
+            <tr>
+                    <b><th scope="col" class="th-num">번호</th>
+                    <th scope="col" class="th-title">제목</th>
+                    <th scope="col" class="th-date">작성자</th>
+                    <th scope="col" class="th-date">작성일지</th>
+            </tr>
+        </thead>
+        <tbody>
+                {% for item in data %}
+                <tr>
+                    <td> {{ item.id }}</td>
+                    <td>
+                    <a href="{% url 'contact:detail' item.id %}">
+                        {{ item.subject }}
+                    </a>
+                    </td>   
+                    <td> {{item.username}}</td>
+                    <td>{{item.pub_date}}</td>    
+                   
+                </tr>   
+                {% endfor %}
+            <tr>   
+        </tr>
+        </tbody>
+        </table>
+        <div style='text-align:center;'>
+            <ul class='pagination'>
+                {% for i in page_range %}
+                <li>
+                <a href='{% url "contact:list" %}?page={{ i }}'>
+                    {{ i }}
+                </a>
+                </li>
+                {% endfor %}
+                </ul>
+            </div>
+        
+        <br><br>
+    </div>
+
+{% endblock %}
+<!-- 기본 템플릿 안에 삽입될 내용 End -->
+
+</body>

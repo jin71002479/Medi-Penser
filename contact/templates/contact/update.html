@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+
+<!-- 기본 템플릿 안에 삽입될 내용 Start -->
+{% block content %}
+
+<div class="container">
+    <h5 class="my-3 border-bottom pb-2">게시물 수정</h5>
+    <form method="post" class="post-form my-3">
+        {% csrf_token %}
+        
+        <!-- 오류표시 Start -->
+        {% if form.errors %}
+        <div class="alert alert-danger" role="alert">
+            {% for field in form %}
+                {% if field.errors %}
+                    <strong>{{ field.label }}</strong>
+                    {{ field.errors }}
+                {% endif %}
+            {% endfor %}
+        </div>
+        {% endif %}
+        <!-- 오류표시 End -->
+        <div class="form-group">
+            <label for="subject">제목</label>
+            <input type="text" class="form-control" name="subject" value="{{ form.subject.value|default_if_none:'' }}">
+        </div>
+        <div class="form-group">
+            <label for="content">내용</label>
+            <textarea name="content" id ="content" class="form-control" rows="10"
+            placeholder = "내용을 입력해주세요"></textarea> 
+        <div style='text-align:right;'>
+            <br><button type="submit" class="btn btn-primary">수정하기</button>
+            <a href="{% url 'contact:list' %}" class="btn btn-primary">
+                목록으로
+            </a>
+        </div>
+        </form>
+        </div>
+
+{% endblock %}
+<!-- 기본 템플릿 안에 삽입될 내용 End -->
+
+    </body>
