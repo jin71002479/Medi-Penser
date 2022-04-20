@@ -121,7 +121,7 @@
             <div class="block-38 text-center">
               <div class="block-38-img">
                 <div class="block-38-header">
-                  <img src='{%static "images/person_1.jpg" %}' alt="Image placeholder" class="mb-4">
+                  <img src='{%static "images/person_1.jpg" %}' alt="Image placeholder" class="mb-4" style="width:280px">
                   <h3 class="block-38-heading h4">{{ user.fullname }} 님</h3>
                   <p class="block-38-subheading" style="text-align:center; padding-top: 10px;">
                     ID : {{ user.username }}
@@ -135,7 +135,7 @@
             <div class="card mb-4">
               <div class="card-body">
                 <div class="row">
-                  <div class="col-sm-4">ㅣ
+                  <div class="col-sm-4">
                     <h6 class="mb-1">나이</h6>
                   </div>
                   <div class="col-sm-9 text-secondary">
@@ -163,10 +163,28 @@
                 <hr>
                 <div class="row">
                   <div class="col-sm-4">
+                    <h6 class="mb-1">이메일</h6>
+                  </div>
+                  <div class="col-sm-9 text-secondary">
+                    {{ user.email }}
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-4">
                     <h6 class="mb-1">환자와의 관계</h6>
                   </div>
                   <div class="col-sm-9 text-secondary">
                     {{ user.relation }}
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-4">
+                    <h6 class="mb-1">약국 또는 병원</h6>
+                  </div>
+                  <div class="col-sm-9 text-secondary">
+                    {{ user.parmacy }}
                   </div>
                 </div>
                 </div>
