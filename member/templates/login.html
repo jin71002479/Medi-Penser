@@ -115,12 +115,12 @@
                 <label for="password">PASSWORD</label>
             </div>
             <div class="btn-area">
-                <button type="submit" onclick="location.href= {% url 'main:index' %}">LOGIN</button>
+              <button type="submit" class="btn lg-12 ml-5">로그인</button>
             </div>
         </form>
 
         <div class="caption">
-          <a href="signup.html" class="open-popup">회원가입</a>
+          <a href="{% url 'member:signup' %}" class="open-popup">회원가입</a>
       </div>
         
     </section>

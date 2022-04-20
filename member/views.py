@@ -15,7 +15,7 @@ def login_view(request):
         if user is not None:
            print("인증성공")
            login(request, user)
-           return redirect('member:login')
+           return redirect('main:index')
         else:
             print("인증실패")    
     return render(request, "login.html")
