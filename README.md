@@ -14,4 +14,4 @@
 ## 인식할 얼굴의 data set 만들기
 ![OpenCV - Webcam Capture](https://user-images.githubusercontent.com/85106442/165012056-c7a9ad83-9ffe-43cf-88ca-be2a3c083576.jpg)
 ## 얼굴 검출하기
-![Face Detecting - Haar Cascade Classifier](https://user-images.githubusercontent.com/85106442/165012401-d4abf2f2-aaed-4958-88ac-8d88fe533fa5.png)
+![Face Detecting](https://user-images.githubusercontent.com/85106442/165013243-437f7427-19b0-4ddc-9dd8-322243a59449.png)
