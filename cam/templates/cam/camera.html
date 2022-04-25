@@ -96,20 +96,26 @@
             <article class="templatemo-item">
               <h2>여기를 보세요</h2>
               <p>
-               <img src="{% url 'cam:video' %}" alt=""></br></br>	
+               {% comment %} <img src="{% url 'cam:cap' %}" alt=""></br></br>	 {% endcomment %}
               </p>
       
             </article><hr> 
               </br>
               <p>
+                <div class="btn_wrap">
+                  <form action="{% url 'cam:cap' %}">
+                  <button type="submit" class="btn btn-light" style='background-color:#86DACA'>등록하기
+                </button></p></form>
               <div class="btn_wrap">
                 <form action="{% url 'cam:show' %}" method='post'>
                   {% csrf_token %}
-           <button type="submit" class="btn btn-light" style='background-color:#86DACA'>촬영하기</button></p>
+           <button type="submit" class="btn btn-light" style='background-color:#86DACA'>인식하기</button></p>
+                </form>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
 
     <footer class="site-footer" style="background-color:#c6eee6; padding:3em 0;">
