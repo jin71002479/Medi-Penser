@@ -12,3 +12,5 @@
 ## Architecture
 ## 인식할 얼굴의 data set 만들기
 ![OpenCV - Haar Cascade Classifier](https://user-images.githubusercontent.com/85106442/165012056-c7a9ad83-9ffe-43cf-88ca-be2a3c083576.jpg)
+## 얼굴 검출하기
+(https://user-images.githubusercontent.com/85106442/165012401-d4abf2f2-aaed-4958-88ac-8d88fe533fa5.png)
