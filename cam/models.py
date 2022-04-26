@@ -9,5 +9,4 @@ class Image(models.Model):
 		return self.image_name
 
 class Photo(models.Model):
-    number = models.IntegerField()
     names= models.CharField(max_length=200)

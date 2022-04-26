@@ -13,10 +13,10 @@ from PIL import Image
 def Register(request):
     if request.method == "POST": 
         print(request.POST)
-        number = request.POST.get("number")
+        # number = request.POST.get("number")
         names = request.POST.get("names")
 
-        Photo.objects.create(number=number, names=names)  
+        Photo.objects.create( names=names)  
         return redirect("cam:cap")
 
     return render(request, "cam/input.html")
@@ -36,7 +36,7 @@ def cap(request):
 	face_detector = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
 	path=directory+"/dataset/User."
 	# For each person, enter one numeric face id
-	face_id = rows.number
+	face_id = (rows.id)-1
 
 	# Initialize individual sampling face count
 	count = 0
@@ -128,52 +128,54 @@ def md(request):
 			cam.release()
 			cv2.destroyAllWindows()
 			break
-	
+	return render(request, 'cam/camera.html')
 
-class VideoCamera(object):
-	def __init__(self):
-		self.video = cv2.VideoCapture(0 + cv2.CAP_DSHOW)
-		(self.grabbed, self.frame) = self.video.read()
-		threading.Thread(target=self.update, args=()).start()
+# class VideoCamera(object):
+# 	def __init__(self):
+# 		self.video = cv2.VideoCapture(0 + cv2.CAP_DSHOW)
+# 		(self.grabbed, self.frame) = self.video.read()
+# 		threading.Thread(target=self.update, args=()).start()
 
-	def __del__(self):
-		self.video.release()
+# 	def __del__(self):
+# 		self.video.release()
 
-	def get_frame(self):
-		image = self.frame
-		ret, jpeg = cv2.imencode('.jpg', image)
-		return jpeg.tobytes()		
+# 	def get_frame(self):
+# 		image = self.frame
+# 		ret, jpeg = cv2.imencode('.jpg', image)
+# 		return jpeg.tobytes()		
 
-	def update(self):
-		while True:
-			(self.grabbed, self.frame) = self.video.read()
+# 	def update(self):
+# 		while True:
+# 			(self.grabbed, self.frame) = self.video.read()
 
-	def take_frame(self):
-		now = datetime.now()
-		fileName = filePath + now.strftime('%y%m%d_%H%M%S') + '.png'
-		print (fileName)
-		cv2.imwrite(fileName, self.frame)
+# 	def take_frame(self):
+# 		now = datetime.now()
+# 		fileName = filePath + now.strftime('%y%m%d_%H%M%S') + '.png'
+# 		print (fileName)
+# 		cv2.imwrite(fileName, self.frame)
 
-		db = Image(image_name=now.strftime('%y%m%d_%H%M%S'), pub_date=timezone.now())
-		db.save()
-
-
+# 		db = Image(image_name=now.strftime('%y%m%d_%H%M%S'), pub_date=timezone.now())
+# 		db.save()
 
 
-def gen(camera):
-	while True:
-		frame = camera.get_frame()
-		yield(b'--frame\r\n'
-			b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
 
-def video(request):
-    try:
-        return StreamingHttpResponse(gen(VideoCamera()), content_type="multipart/x-mixed-replace;boundary=frame")
-    except:
-        pass
+
+# def gen(camera):
+# 	while True:
+# 		frame = camera.get_frame()
+# 		yield(b'--frame\r\n'
+# 			b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
+
+# def video(request):
+#     try:
+#         return StreamingHttpResponse(gen(VideoCamera()), content_type="multipart/x-mixed-replace;boundary=frame")
+#     except:
+#         pass
 
 def camera_1(request):
-	if request.method == 'POST':
-		md(request)
-
-	return render(request, 'cam/camera.html')
+	rows = Photo.objects.all()
+	names=[]
+	for i in rows:
+		names.append(i.names)
+	l=len(names)
+	return render(request, 'cam/camera.html',{'names':names,'l':l})

@@ -94,7 +94,14 @@
               <path d="M2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2zm.5 2a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm9 2.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0z"/>
             </svg>
             <article class="templatemo-item">
-              <h2>여기를 보세요</h2>
+             
+{% comment %}               
+              <h2>여기를 보세요</h2> {% endcomment %}
+              {%if l is 0 %}
+              <h3>환자를 등록해주세요</h3>
+            {%else%}
+            <h3>등록된 환자: {{names}}</h3>
+            {%endif%}
               <p>
                {% comment %} <img src="{% url 'cam:cap' %}" alt=""></br></br>	 {% endcomment %}
               </p>
@@ -107,8 +114,7 @@
                   <button type="submit" class="btn btn-light" style='background-color:#86DACA'>등록하기
                 </button></p></form>
               <div class="btn_wrap">
-                <form action="{% url 'cam:show' %}" method='post'>
-                  {% csrf_token %}
+                <form action="{% url 'cam:mod' %}">
            <button type="submit" class="btn btn-light" style='background-color:#86DACA'>인식하기</button></p>
                 </form>
               </div>
