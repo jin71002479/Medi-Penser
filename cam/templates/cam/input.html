@@ -1,0 +1,88 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>sign-up</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200&display=swap');
+    body {
+      min-height: 100vh;
+      font-family: 'Noto Sans KR', sans-serif;
+      background:  -webkit-gradient(linear, left bottom, right top, from(#bad3c0), to(#CFEBEA));
+      /* background: -webkit-linear-gradient(bottom left, #bad3c0 0%, #CFEBEA 100%);
+      background: -moz-linear-gradient(bottom left, #bad3c0 0%, #CFEBEA 100%);
+      background: -o-linear-gradient(bottom left, #bad3c0 0%, #CFEBEA 100%);
+      background: linear-gradient(to top right, #bad3c0 0%, #CFEBEA 100%); */
+    }
+
+    .input-form {
+      max-width: 680px;
+
+      margin-top: 80px;
+      padding: 32px;
+
+      background: #fff;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      border-radius: 10px;
+      -webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+      -moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+      box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
+    }
+
+    #btn-1 {
+      border:none;
+    }
+
+    p {
+      line-height: 50%;
+    }
+  </style>
+</head>
+
+<body>
+  <form method="post" class="post-form">
+    {% csrf_token %}
+  <div class="container">
+    <div class="input-form-backgroud row">
+      <div class="input-form col-md-12 mx-auto">
+        <h4 class="mb-3" style="text-align: center;">등록</h4>
+        <form class="validation-form" novalidate>
+          <div class="row">
+            <div class="col-md-12 mb-3">
+              <label for="number">번호</label>
+              <input type="number" class="form-control" id="number" name = "number" placeholder="번호를 입력해주세요" value="" required>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="name">이름</label>
+            <input type="names" class="form-control" id="names" name = "names"placeholder="이름을 입력해주세요" required>
+            <div class="mb-3" style="float:left; margin-right:30px">
+                <button id="btn-1" class="btn btn-primary btn-lg btn-block" type="submit" style="background-color: #b0ddb6; width:150px;" style="background-color: rgba(117, 117, 117, 0.5); width:150px;">완료</button></div>
+          </div>
+        </form>
+
+      
+        <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+        <script src="{% static 'js/jquery-ui.js' %}"></script>
+        <script src="{% static 'js/popper.min.js' %}"></script>
+        <script src="{% static 'js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+        <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+        <script src="{% static 'js/aos.js' %}"></script>
+      
+        <script src="{% static 'js/main.js' %}"></script>
+      
+      </body>
+      
+      </html>

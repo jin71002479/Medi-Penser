@@ -103,7 +103,7 @@
               </br>
               <p>
                 <div class="btn_wrap">
-                  <form action="{% url 'cam:cap' %}">
+                  <form action="{% url 'cam:Register' %}">
                   <button type="submit" class="btn btn-light" style='background-color:#86DACA'>등록하기
                 </button></p></form>
               <div class="btn_wrap">
@@ -111,6 +111,7 @@
                   {% csrf_token %}
            <button type="submit" class="btn btn-light" style='background-color:#86DACA'>인식하기</button></p>
                 </form>
+              </div>
           </div>
         </div>
       </div>

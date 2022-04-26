@@ -1,7 +1,7 @@
 
 from django.conf import settings
 from django.urls import path
-from cam.views import camera_1,video,md,cap
+from cam.views import camera_1,video,md,cap,Register
 from django.conf.urls.static import static
 
 
@@ -11,7 +11,7 @@ urlpatterns = [
     path('video_1/', video, name="video"),
     path('show/',camera_1,name='show'),
     path('cap/',cap,name='cap'),
-    # path('train/',getImagesAndLabels),
+    path('input/',Register,name='Register'),
     path('mod/',md,name='mod'),
 ]+ static(
     settings.MEDIA_URL,

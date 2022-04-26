@@ -5,12 +5,21 @@ import os
 import threading
 import cv2
 from django.http.response import StreamingHttpResponse
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 import numpy as np
-from cam.models import Image
+from cam.models import Image,Photo
 from PIL import Image
 
-from member.models import User
+def Register(request):
+    if request.method == "POST": 
+        print(request.POST)
+        number = request.POST.get("number")
+        names = request.POST.get("names")
+
+        Photo.objects.create(number=number, names=names)  
+        return redirect("cam:cap")
+
+    return render(request, "cam/input.html")
 
 directory= os.getcwd()
 filePath = directory + '/capture/'
@@ -20,13 +29,14 @@ recognizer = cv2.face.LBPHFaceRecognizer_create()
 detector = cv2.CascadeClassifier(cv2.data.haarcascades + "haarcascade_frontalface_default.xml")
 
 def cap(request):
+	rows = Photo.objects.order_by().last()
 	cam = cv2.VideoCapture(0,cv2.CAP_DSHOW)
 	cam.set(3, 640) # set video width
 	cam.set(4, 480) # set video height
 	face_detector = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
 	path=directory+"/dataset/User."
 	# For each person, enter one numeric face id
-	face_id = 0
+	face_id = rows.number
 
 	# Initialize individual sampling face count
 	count = 0
@@ -44,12 +54,12 @@ def cap(request):
 		k = cv2.waitKey(100) & 0xff # Press 'ESC' for exiting video
 		if k == 27:
 			break
-		elif count >= 50: # Take 30 face sample and stop video
+		elif count >= 30: # Take 30 face sample and stop video
 			break
 	cam.release()
 	cv2.destroyAllWindows()
 
-	return render(request,'cam/camera2.html')
+	return render(request, 'cam/camera.html')
 
 def getImagesAndLabels(path):
     imagePaths = [os.path.join(path,f) for f in os.listdir(path)]     
@@ -74,16 +84,11 @@ def md(request):
 	faceCascade = cv2.CascadeClassifier(cascadePath)
 	font = cv2.FONT_HERSHEY_SIMPLEX
 
-	#iniciate id counter
 	id = 0
-
-	# names related to ids: example ==> loze: id=1,  etc
-	# 이런식으로 사용자의 이름을 사용자 수만큼 추가해준다.
-	names = ['yujin']
-	
-
-	# Initialize and start realtime video capture
-	
+	rows = Photo.objects.all()
+	names=[]
+	for i in rows:
+		names.append(i.names)
 
 	while True:
 		cam = cv2.VideoCapture(0,cv2.CAP_DSHOW)
@@ -107,7 +112,7 @@ def md(request):
 		for(x,y,w,h) in faces:
 			cv2.rectangle(img, (x,y), (x+w,y+h), (0,255,0), 2)
 			id, confidence = recognizer.predict(gray[y:y+h,x:x+w])
-			# Check if confidence is less them 100 ==> "0" is perfect match
+
 			if (confidence < 100):
 				id = names[id]
 				confidence = "  {0}%".format(round(100 - confidence))

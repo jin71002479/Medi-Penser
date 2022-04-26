@@ -7,3 +7,7 @@ class Image(models.Model):
 
 	def __str__(self):
 		return self.image_name
+
+class Photo(models.Model):
+    number = models.IntegerField()
+    names= models.CharField(max_length=200)
