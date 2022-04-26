@@ -96,13 +96,11 @@
 
           <div class="mb-3">
             <label for="gender">성별</label> 
-                    <label><input type="radio" name="gender" id="gender" value="male">남성</label>       <label><input type="radio" name="gender" id="gender" value="femal">여성</label>
+                    <label><input type="radio" name="gender" id="gender" value="male">남성</label><label><input type="radio" name="gender" id="gender" value="female">여성</label>
           </div>
 
           <div class="mb-3">
             <label for="relation" class="text-black">환자와의 관계(Relation) <span class="text-danger" name="relation" id="relation"></span></label>
-            
-    
             <select id="relation" class="form-control" name='relation'>
                 <option selected>환자와의 관계</option>
                 <option value = "부모">부모</option>
@@ -113,7 +111,7 @@
                 <option value = "친인척">친인척</option>
           </div>
           
-          <br><br>
+          
           <div class="mb-3">
             <label for="parmacy">주 이용 병원/약국(선택)</label>
             <input type="parmacy" class="form-control" id="parmacy" name = "parmacy" placeholder="주로 방문하는 약국이나 병원을 입력해주세요">
@@ -124,6 +122,7 @@
             <input type="checkbox" class="custom-control-input" id="aggrement" required>
             <label class="custom-control-label" for="aggrement">개인정보 수집 및 이용에 동의합니다.</label>
           </div>
+          
           <div class="mb-4"></div>
           <div class="mb-3" style="float:left; margin-right:30px">
             <button id="btn-1" class="btn btn-primary btn-lg btn-block" type="submit" style="background-color: #b0ddb6; width:150px;" style="background-color: rgba(117, 117, 117, 0.5); width:150px;">가입 완료</button></div>
