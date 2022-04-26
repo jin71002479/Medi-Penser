@@ -10,6 +10,15 @@ import numpy as np
 from cam.models import Image,Photo
 from PIL import Image
 
+
+def camera_1(request):
+	rows = Photo.objects.all()
+	names=[]
+	for i in rows:
+		names.append(i.names)
+	l=len(names)
+	return render(request, 'cam/camera.html',{'names':names,'l':l})
+
 def Register(request):
     if request.method == "POST": 
         print(request.POST)
@@ -59,7 +68,7 @@ def cap(request):
 	cam.release()
 	cv2.destroyAllWindows()
 
-	return render(request, 'cam/camera.html')
+	return redirect('cam:show')
 
 def getImagesAndLabels(path):
     imagePaths = [os.path.join(path,f) for f in os.listdir(path)]     
@@ -128,7 +137,7 @@ def md(request):
 			cam.release()
 			cv2.destroyAllWindows()
 			break
-	return render(request, 'cam/camera.html')
+	return redirect('cam:show')
 
 # class VideoCamera(object):
 # 	def __init__(self):
@@ -172,10 +181,3 @@ def md(request):
 #     except:
 #         pass
 
-def camera_1(request):
-	rows = Photo.objects.all()
-	names=[]
-	for i in rows:
-		names.append(i.names)
-	l=len(names)
-	return render(request, 'cam/camera.html',{'names':names,'l':l})
