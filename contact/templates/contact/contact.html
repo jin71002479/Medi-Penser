@@ -51,7 +51,7 @@
                 <td>{{ forloop.revcounter }}</td>
                 <td>
                     <a href="{% url 'contact:detail' question.id %}">
-                        {{ question.subject }}
+                        <span style='color:black'>{{ question.subject }}</span>
                     </a>
                 </td>
                 <td>
@@ -68,11 +68,11 @@
             {% endif %}
         </tbody>
     </table>
-
+    
     <div class="d-grid gap-2 d-md-block">
-
-        <a href="{% url 'contact:upload3' %}" class="btn btn-info btn-sm float-right">
-            <h6 style="color: #FFFFFF;">Contact</h6>
+        
+        <a href="{% url 'contact:upload3' %}" class="btn btn-light btn-sm float-right" style='background-color:#86DACA'>
+            <h6><span style='color:grey;font-weight:bold'>작성하기</h6></span>
         </a>
 </div>
 

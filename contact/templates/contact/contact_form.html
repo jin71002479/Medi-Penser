@@ -5,7 +5,7 @@
 
 <div class="container">
     <h5 class="my-3 border-bottom pb-2"><span
-            style="background: linear-gradient(to top, #FFEE00 10%, transparent 30%)">Contact</h5></span>
+            style="background: linear-gradient(to top, #86DACA 10%, transparent 20%);color:black">질문 등록</h5></span>
     <form class="post-form my-3" action="{% url 'contact:upload3' %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
 
@@ -40,9 +40,9 @@
 
         </div>
         <div style='text-align:right;'>
-            <br><button type="submit" class="btn btn-primary">저장하기</button>
-            <a href="{% url 'contact:list' %}" class="btn btn-primary">
-                목록으로
+            <br><button type="submit" class="btn btn-light" style='background-color:#86DACA'><span style='color:grey;font-weight:bold'>저장하기</span></button>
+            <a href="{% url 'contact:list' %}" class="btn btn-light"style='background-color:#86DACA'>
+                <span style='color:grey;font-weight:bold'>목록으로</span>
             </a>
         </div>
         <br> <br> <br>

@@ -9,7 +9,7 @@
   
     <br>
 
-    <h3 class="border-bottom py-2">  <img src="/static/images/q.jpg"> <b>{{ question.subject }}</b>
+    <h3 class="border-bottom py-2">  <img src="/static/images/q.png"> <b>{{ question.subject }}</b>
         <br></h3>
      
         <div class="card shadow mb-4" >
@@ -37,14 +37,14 @@
 
        
     <br>
-   <h4 class="border-bottom my-2 py-2">
-        <div><img src="/static/images/A.png"><b>
+   <h4 class="border-bottom my-2 py-2" style='color:#8C92A0'>
+        <div><img src="/static/images/a.png"><b>
             등록된 답변</div>
     </b></h4>
 
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary"> <span style="background: linear-gradient(to top, #FFE400 30%, transparent 70%)">{{question.answer_set.count}}개</span>의 답변</h6>
+            <h6 class="m-0 font-weight-bold text-primary"> <span style="color: black">{{question.answer_set.count}}개의 답변</h6></span>
         </div>
         <div class="card-body">
         
@@ -55,9 +55,9 @@
     {% for answer in question.answer_set.all %}
     <div class="card shadow mb-4">
         <div class="card-header py-3" >
-            <b style='color: #FF1244'>
+            <b style='color: #EF8161'>
                 작성자 : {{ answer.username }} </b>
-                <a href="{% url 'contact:answer_delete' answer.id %}" class="btn btn-primary" style="float:right"onClick="alert('삭제되었습니다.')">삭제</a>
+                <a href="{% url 'contact:answer_delete' answer.id %}" class="btn btn-light" style='background-color:#86DACA;float:right;color:grey;font-weight:bold' onClick="alert('삭제되었습니다.')">삭제</a>
         </div>
         
             <div class="card-text" style="white-space: pre-line;">
@@ -99,13 +99,16 @@
             <textarea name="content" id="content" class="form-control" rows="7" placeholder="내용을 입력해주세요"></textarea>
         </div>
         <div style='text-align:right;'>
-            <input type="submit" value="답변등록" class="btn btn-primary">
-            <a href="{% url 'contact:list' %}" class="btn btn-primary">
-                목록으로
+            <input type="submit" value="답변등록" class="btn btn-light" style='color:grey;font-weight:bold;background-color:#86DACA'>
+            <a href="{% url 'contact:list' %}" class="btn btn-light" style='background-color:#86DACA'><span style='color:grey;font-weight:bold'>
+                목록으로</span>
             </a>
-            <a href="{% url 'contact:download' question.id %}" class="btn btn-primary">다운로드</a>           
-            <a href="{% url 'contact:update' question.id %}" class="btn btn-primary">수정</a>
-            <a href="{% url 'contact:delete' question.id %}" class="btn btn-primary">삭제</a>
+            <a href="{% url 'contact:download' question.id %}" class="btn btn-light" style='background-color:#86DACA'><span style='color:grey;font-weight:bold'>
+                다운로드</span></a>           
+            <a href="{% url 'contact:update' question.id %}" class="btn btn-light" style='background-color:#86DACA'>
+                <span style='color:grey;font-weight:bold'>수정</a></span>
+            <a href="{% url 'contact:delete' question.id %}" class="btn btn-light" style='background-color:#86DACA'>
+                <span style='color:grey;font-weight:bold'>삭제</span></a>
         </div>
     </form>
     <div>
@@ -115,6 +118,8 @@
      </div>
     <br><br>
     </div>
+</div>
+</div>
     {% endblock %}
     <!-- 기본 템플릿 안에 삽입될 내용 End -->
 

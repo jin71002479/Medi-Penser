@@ -30,13 +30,15 @@
             <textarea name="content" id ="content" class="form-control" rows="10"
             placeholder = "내용을 입력해주세요"></textarea> 
         <div style='text-align:right;'>
-            <br><button type="submit" class="btn btn-primary">수정하기</button>
-            <a href="{% url 'contact:list' %}" class="btn btn-primary">
-                목록으로
+            <br><button type="submit" class="btn btn-light" style='background-color:#86DACA'><span style='color:grey;font-weight:bold'>수정하기</span></button>
+            <a href="{% url 'contact:list' %}" class="btn btn-light" style='background-color:#86DACA'>
+                <span style='color:grey;font-weight:bold'> 목록으로</span>
             </a>
         </div>
         </form>
         </div>
+    </div>
+</div>
 
 {% endblock %}
 <!-- 기본 템플릿 안에 삽입될 내용 End -->
