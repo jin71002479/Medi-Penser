@@ -90,16 +90,19 @@
         }
         </style>
 
-
+       
 
     <section class="login-form">
-        <h1>MEDIPENSER</h1>
+     <h1> <a href="{% url 'main:index' %}" style="text-decoration:none ;color:white">MEDIPENSER</a></h1>
         {% if user.is_authenticated %}
         로그아웃 페이지   
         <h3>{{user.username}} 님 정말 로그아웃 하시겠어요?</h3>
         <div class="mb-3" style="float:left;">
           <br><br>
-          <button id="btn-1" class="btn btn-primary btn-lg btn-block" type="button" onclick = "location.href= '{% url 'member:logout' %}'" style="background-color: rgba(117, 117, 117, 0.5); width:150px;">확인</button></div>
+          <button id="btn-1" class="btn btn-lg btn-block" type="button" onclick = "location.href= '{% url 'member:logout' %}'" style="background-color: rgba(117, 117, 117, 0.5); width:150px;">확인</button></div>
+          <div class="mb-3" style="float:right;">
+            <br><br>
+          <button id="btn-1" class="btn btn-lg btn-block" type="button" onclick = "location.href= '{% url 'main:index' %}'" style="background-color: rgba(117, 117, 117, 0.5); width:150px;">취소</button></div>
           {% else %}
           <form method="post" action="{% url 'member:login' %}">
           {% csrf_token %}
@@ -120,7 +123,7 @@
         </form>
 
         <div class="caption">
-          <a href="{% url 'member:signup' %}" class="open-popup">회원가입</a>
+          <a href="{% url 'member:signup' %}" class="open-popup" style="font-weight:bold; font-size:20px">회원가입</a>
       </div>
         
     </section>

@@ -62,7 +62,11 @@
                 <li class="active"><a href="{% url 'cam:show' %}">Camera</a></li>
                 <li><a href="{% url 'main:about' %}">UserPage</a></li>
                 <li><a href="{% url 'contact:list' %}">Contact</a></li>
+                {% if user.is_authenticated %}
                 <li><a href="{% url 'member:login' %}">Logout</a></li>
+                {%else%}
+                <li><a href="{% url 'member:login' %}">Login</a></li>
+                {%endif%}
               </ul>
             </nav>
           </div>
