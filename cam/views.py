@@ -38,14 +38,15 @@ recognizer = cv2.face.LBPHFaceRecognizer_create()
 detector = cv2.CascadeClassifier(cv2.data.haarcascades + "haarcascade_frontalface_default.xml")
 
 def cap(request):
-	rows = Photo.objects.order_by().last()
+	rows = Photo.objects.all()
+	nums=rows.count()
 	cam = cv2.VideoCapture(0,cv2.CAP_DSHOW)
 	cam.set(3, 640) # set video width
 	cam.set(4, 480) # set video height
 	face_detector = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
 	path=directory+"/dataset/User."
 	# For each person, enter one numeric face id
-	face_id = (rows.id)-1
+	face_id = nums
 
 	# Initialize individual sampling face count
 	count = 0
@@ -77,7 +78,7 @@ def getImagesAndLabels(path):
     for imagePath in imagePaths:
         PIL_img = Image.open(imagePath).convert('L') # convert it to grayscale
         img_numpy = np.array(PIL_img,'uint8')
-        id = int(os.path.split(imagePath)[-1].split(".")[1])
+        id = int(os.path.split(imagePath)[-1].split(".")[1])-1
         faces = detector.detectMultiScale(img_numpy)
         for (x,y,w,h) in faces:
             faceSamples.append(img_numpy[y:y+h,x:x+w])
@@ -177,7 +178,7 @@ def md(request):
 
 # def video(request):
 #     try:
-#         return StreamingHttpResponse(gen(VideoCamera()), content_type="multipart/x-mixed-replace;boundary=frame")
+#         return StreamingHttpResponse(gen(md()), content_type="multipart/x-mixed-replace;boundary=frame")
 #     except:
 #         pass
 
