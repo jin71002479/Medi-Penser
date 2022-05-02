@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-  <title>MEDIPENSER &mdash; Colorlib Template</title>
+  <title>MEDIPENSER-Main</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -45,9 +45,25 @@
     .mt-5, .my-5 {
       margin-top :2 rem!important;
     }
-   
 
+    .floating 
+    { position: fixed; right: 50%; 
+      top: 600px; margin-right: -720px;
+       text-align:center; width: 120px; }
 
+    
+       
+    .modal-body::-webkit-scrollbar{ display:none; }
+
+       
+    .modal-dialog{position: fixed; 
+      right: 50%; 
+      top: 50px; margin-right: -520px;
+       text-align:center; width: 800px; height: 800px;}
+
+      .modal-body{max-height: calc(100vh - 210px);
+       overflow-y: auto;-ms-overflow-style: none;}
+    
   </style>
   
    <!--============ 네비게이션 =============-->
@@ -106,7 +122,7 @@
         </div>
       </div>
     </div>
-
+  
     <div class="site-section">
       <div class="container">
         <div class="row align-items-stretch section-overlap">
@@ -152,6 +168,112 @@
         </div>
       </div>
     </div>
+
+    {% comment %} 챗봇 시작 {% endcomment %}
+    <div class='floating'><a href="{% url 'main:chatanswer' %}" data-toggle="modal" data-target="#myModal"><img src="{% static 'images/chat1.png' %}" width='100'></a></div>
+     <div class="modal fade" id="myModal" role="dialog"> 
+      <div class="modal-dialog"> 
+        <div class="modal-content" style="background-color:#BAD3D2;color:black;"> 
+          <div class="modal-header">
+             <h4 class="modal-title">챗봇</h4> <button type="button" class="close" data-dismiss="modal">×</button> 
+            </div> <div id="chatbox"class="modal-body" style="height:450px;margin-top:50px;padding:10px;background-color:#BAD3D2;overflow-y:scroll;overflow-x:hidden;max-height:100vh;color:black"> </div>
+            <div class="chatfooter">
+              <table width="100%">
+                  <tr>
+                  <td width="90%">
+                      <input id="chattext" placeholder="질문을 입력하고 엔터키를 눌러주세요" style="padding:5px 0;width:100%;border:solid;color:grey;font-weight:bold;">
+                  </td>
+                  <td width="10%"><button class="btn btn-secondary" style="padding:5px 0;width:100%;background-color:#86DACA" onclick="sendAsk()" id="sendbtn"><span style='color:grey;font-weight:bold'>입력</span></button></td>
+                  </tr>
+              </table>
+          </div>
+               </div> 
+              <div class="modal-footer"> 
+              
+                </div>
+              
+            </div> 
+          </div> 
+        </div>
+    
+        {% block scripts %}
+        <script>
+        function getCookie(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = jQuery.trim(cookies[i]);
+            
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+
+        var csrftoken = getCookie('csrftoken');
+
+        var xhr;
+
+        function sendAsk() {
+            chattext = document.getElementById("chattext").value;
+            if(chattext == "") {
+                document.getElementById("chattext").focus();
+                return false;
+            }
+
+            addtext = "<div style='margin:15px 0;text-align:right;'> <span style='padding:3px 15px;background-color:#86DACA;border-radius:3px;'>" + chattext + "</span></div>";
+            document.getElementById("chatbox").innerHTML += addtext;
+
+            var strurl = "chatanswer?questext=" + chattext;
+            //alert(strurl);
+            //return false;
+
+            xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4) {
+                    var data = xhr.responseText;
+
+                    var obj = JSON.parse(data);
+
+                    if(obj.flag == "0"){
+
+                        bottext = "<div style='margin:15px 0;text-align:left;'><span style='padding:3px 15px;background-color:white;border-radius:3px;'>" + obj.anstext + "</span></div>";
+                        document.getElementById("chatbox").innerHTML += bottext;
+
+                        var objDiv = document.getElementById("chatbox");
+                        objDiv.scrollTop = objDiv.scrollHeight;
+
+                        document.getElementById("chattext").value = "";
+                        document.getElementById("chattext").focus();
+
+                    }
+                }
+            };
+            xhr.open("GET", strurl);
+            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+            xhr.send(null);
+        }
+
+      
+
+        </script>
+    {% endblock %}
+    <script>
+
+      var input = document.getElementById("chattext");
+      
+      input.addEventListener("keyup", function(event) {
+        if (event.keyCode === 13) {
+          document.getElementById("sendbtn").click();
+        }
+      });
+      
+      </script>
+    {% comment %} 챗봇 끝 {% endcomment %}
 
     {% comment %} <div class="site-section">
       <div class="container">
@@ -213,7 +335,7 @@
     </div>
 
    {% endcomment %}
-    
+   
 
     <footer class="site-footer" style="background-color:#c6eee6; padding:3em 0;">
       <div class="container">
