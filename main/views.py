@@ -40,7 +40,7 @@ def chatanswer(request):
             lbl_encoder = pickle.load(enc)
 
         # parameters
-        max_len = 20
+        max_len = 50
 
         # while True:
         print( "User: ", end="")
