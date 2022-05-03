@@ -6,3 +6,6 @@ local_settings.py
 db.sqlite3
 db.sqlite3-journal
 .DS_Store
+model/tokenizer.pickle
+model/chat_model/variables/variables.index
+model/chat_model/variables/variables.data-00000-of-00001
