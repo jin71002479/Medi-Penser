@@ -40,7 +40,7 @@ def chatanswer(request):
             lbl_encoder = pickle.load(enc)
 
         # parameters
-        max_len = 50
+        max_len = 20
 
         # while True:
         print( "User: ", end="")
@@ -62,4 +62,4 @@ def chatanswer(request):
     context['anstext'] = anstext
     context['flag'] = '0'
 
-    return JsonResponse(context,content_type="application/json")
+    return JsonResponse(context, content_type="application/json")
