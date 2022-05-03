@@ -24,19 +24,19 @@ def chatanswer(request):
 
     import pickle
 
-    file = open(f"./static/intents.json", encoding="UTF-8")
+    file = open(f"./model/intents.json", encoding="UTF-8")
     data = json.loads(file.read())
 
     def chat3(inp):
         # load trained model
-        model = keras.models.load_model('static/chat_model')
+        model = keras.models.load_model('model/chat_model')
 
         # load tokenizer object
-        with open('static/tokenizer.pickle', 'rb') as handle:
+        with open('model/tokenizer.pickle', 'rb') as handle:
             tokenizer = pickle.load(handle)
 
         # load label encoder object
-        with open('static/label_encoder.pickle', 'rb') as enc:
+        with open('model/label_encoder.pickle', 'rb') as enc:
             lbl_encoder = pickle.load(enc)
 
         # parameters
