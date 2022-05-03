@@ -40,7 +40,7 @@ detector = cv2.CascadeClassifier(cv2.data.haarcascades + "haarcascade_frontalfac
 def cap(request):
 	rows = Photo.objects.all()
 	nums=rows.count()
-	cam = cv2.VideoCapture(0,cv2.CAP_DSHOW)
+	cam = cv2.VideoCapture(0)
 	cam.set(3, 640) # set video width
 	cam.set(4, 480) # set video height
 	face_detector = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
