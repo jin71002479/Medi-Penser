@@ -1,14 +1,9 @@
-from datetime import datetime
-import PIL
 from cv2 import CAP_DSHOW
-from django.utils import timezone
 import os
-import threading
 import cv2
-from django.http.response import StreamingHttpResponse
 from django.shortcuts import render,redirect
 import numpy as np
-from cam.models import Image,Photo
+from cam.models import Photo
 from PIL import Image
 
 
@@ -21,23 +16,22 @@ def camera_1(request):
 	return render(request, 'cam/camera.html',{'names':names,'l':l})
 
 def Register(request):
-    if request.method == "POST": 
-        print(request.POST)
-        # number = request.POST.get("number")
-        names = request.POST.get("names")
-
-        Photo.objects.create( names=names)  
-        return redirect("cam:cap")
-
-    return render(request, "cam/input.html")
+	if request.method == "POST": 
+		print(request.POST)
+		names = request.POST.get("names")
+		Photo.objects.create(names=names)  
+		return redirect("cam:cap")
+	return render(request, "cam/input.html")
 
 directory= os.getcwd()
 paths=directory+'/dataset/'
 trainpath=directory+'/trainer/trainer.yml'
 recognizer = cv2.face.LBPHFaceRecognizer_create()
 detector = cv2.CascadeClassifier(cv2.data.haarcascades + "haarcascade_frontalface_default.xml")
+
 if not os.path.exists(paths):
-    os.makedirs(paths)
+	os.makedirs(paths)
+
 def cap(request):
 	rows = Photo.objects.all()
 	nums=rows.count()
@@ -46,26 +40,22 @@ def cap(request):
 	cam.set(4, 480) # set video height
 	face_detector = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
 	path=directory+"/dataset/User."
-	# For each person, enter one numeric face id
 	face_id = nums
-
-	# Initialize individual sampling face count
 	count = 0
 	while(True):
 		ret, img = cam.read()
-		#img = cv2.flip(img, -1) # flip video image vertically
+		#img = cv2.flip(img, -1) 
 		gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 		faces = face_detector.detectMultiScale(gray, 1.3, 5)
 		for (x,y,w,h) in faces:
 			cv2.rectangle(img, (x,y), (x+w,y+h), (255,0,0), 2)     
 			count += 1
-			# Save the captured image into the datasets folder
 			cv2.imwrite(path + str(face_id) + '.' + str(count) + ".jpg", gray[y:y+h,x:x+w])
 			cv2.imshow('image', img)
-		k = cv2.waitKey(100) & 0xff # Press 'ESC' for exiting video
+		k = cv2.waitKey(100) & 0xff 
 		if k == 27:
 			break
-		elif count >= 30: # Take 30 face sample and stop video
+		elif count >= 30:
 			break
 	cam.release()
 	cv2.destroyAllWindows()
@@ -73,18 +63,18 @@ def cap(request):
 	return redirect('cam:show')
 
 def getImagesAndLabels(path):
-    imagePaths = [os.path.join(path,f) for f in os.listdir(path)]     
-    faceSamples=[]
-    ids = []
-    for imagePath in imagePaths:
-        PIL_img = Image.open(imagePath).convert('L') # convert it to grayscale
-        img_numpy = np.array(PIL_img,'uint8')
-        id = int(os.path.split(imagePath)[-1].split(".")[1])-1
-        faces = detector.detectMultiScale(img_numpy)
-        for (x,y,w,h) in faces:
-            faceSamples.append(img_numpy[y:y+h,x:x+w])
-            ids.append(id)
-    return faceSamples,ids
+	imagePaths = [os.path.join(path,f) for f in os.listdir(path)]     
+	faceSamples=[]
+	ids = []
+	for imagePath in imagePaths:
+		PIL_img = Image.open(imagePath).convert('L') 
+		img_numpy = np.array(PIL_img,'uint8')
+		id = int(os.path.split(imagePath)[-1].split(".")[1])-1
+		faces = detector.detectMultiScale(img_numpy)
+		for (x,y,w,h) in faces:
+			faceSamples.append(img_numpy[y:y+h,x:x+w])
+			ids.append(id)
+	return faceSamples,ids
 
 def md(request):
 	faces,ids = getImagesAndLabels(paths)

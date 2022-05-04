@@ -9,4 +9,4 @@ class Image(models.Model):
 		return self.image_name
 
 class Photo(models.Model):
-    names= models.CharField(max_length=200)
+	names= models.CharField(max_length=200)

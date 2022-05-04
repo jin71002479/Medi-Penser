@@ -1,13 +1,11 @@
-from config import settings
 import os
-
+import urllib
+import mimetypes
 from django.shortcuts import render, get_object_or_404, redirect
-from django.http import HttpResponse, FileResponse
+from django.http import HttpResponse
 from .models import Question, Answer
 from django.utils import timezone
 from django.core.paginator import Paginator
-from django.views.generic.detail import SingleObjectMixin
-from django.core.files.storage import FileSystemStorage
 from django.contrib.auth.decorators import login_required
 from member.models import User
 
@@ -23,8 +21,7 @@ def contact(request):
         end_page = p.num_pages
 
     context = {'info': info,
-        'page_range' : range(start_page, end_page + 1)
-    }
+        'page_range' : range(start_page, end_page + 1)}
     return render(request, 'contact/contact.html', context)
 
 
@@ -49,7 +46,7 @@ def detail(request, question_id):
 
 
 from .forms import AnswerForm
-@login_required (login_url='member:login')
+@login_required(login_url='member:login')
 def answer_create(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
     
@@ -71,7 +68,7 @@ def answer_create(request, question_id):
 
 
 from .forms import QuestionForm
-@login_required (login_url='member:login')
+@login_required(login_url='member:login')
 def upload3(request):
     user = User.objects.get(username = request.user.username)   
     if request.method == 'POST':
@@ -93,7 +90,7 @@ def upload3(request):
         request, 'contact/contact_form.html', {'form': form})
 
 
-@login_required (login_url='member:login2')
+@login_required(login_url='member:login2')
 def upload4(request):
     user = User.objects.get(username = request.user.username)   
     if request.method == 'POST':
@@ -152,12 +149,13 @@ def answer_delete(request,answer_id):
 def download(request,question_id):   
     question = get_object_or_404(Question, pk=question_id)
     if question.file:
-        file_url = question.file.url[1:] 
+        url = question.file.url[1:] 
+        file_url = urllib.parse.unquote(url)
         if os.path.exists(file_url) :
-            with open(file_url, 'rb') as f:
-                filename = os.path.basename(file_url)
-                response = HttpResponse(f, content_type='application/octet-stream')
-                response['Content-Disposition'] = 'attachment; filename=%s' % filename
+            with open(file_url, 'rb') as fh:
+                quote_file_url = urllib.parse.quote(file_url.encode('utf-8'))
+                response = HttpResponse(fh.read(), content_type=mimetypes.guess_type(file_url)[0])
+                response['Content-Disposition'] = 'attachment; filename*=UTF-8\'\'%s' % quote_file_url
                 return response
     else :  
         return render(request, 'contact/delete.html')

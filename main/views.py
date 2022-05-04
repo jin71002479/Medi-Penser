@@ -1,31 +1,27 @@
 import json
 import os 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
-import tensorflow 
 from tensorflow import keras
 from django.shortcuts import render
-from django.template import loader
 from django.views.decorators.csrf import csrf_exempt
 import numpy as np
-from django.http import HttpResponse, JsonResponse
+from django.http import JsonResponse
 from keras.models import Sequential
 from keras.layers import Dense, Embedding, GlobalAveragePooling1D
 from keras.preprocessing.text import Tokenizer
 from keras.preprocessing.sequence import pad_sequences
 from sklearn.preprocessing import LabelEncoder
-from keras.preprocessing.text import Tokenizer
 
 
 def index(request):
-	context={}
-	return render(request, 'main/index.html',context)
+    context={}
+    return render(request, 'main/index.html',context)
 
 def about(request):
-	return render(request, 'main/about.html')
+    return render(request, 'main/about.html')
 
 with open('model/intents.json','r', encoding="UTF-8") as file:
     data = json.load(file)
-    
 training_sentences = []
 training_labels = []
 labels = []
@@ -36,11 +32,9 @@ for intent in data['intents']:
     for pattern in intent['patterns']:
         training_sentences.append(pattern)
         training_labels.append(intent['tag'])
-    responses.append(intent['responses'])
-    
+        responses.append(intent['responses'])
     if intent['tag'] not in labels:
         labels.append(intent['tag'])
-        
 num_classes = len(labels)
 
 lbl_encoder = LabelEncoder()
@@ -67,8 +61,7 @@ model.add(Dense(16, activation='selu'))
 model.add(Dense(16, activation='selu'))
 model.add(Dense(num_classes, activation='softmax'))
 
-model.compile(loss='sparse_categorical_crossentropy', 
-              optimizer='adam', metrics=['accuracy'])
+model.compile(loss='sparse_categorical_crossentropy',optimizer='adam', metrics=['accuracy'])
 
 model.summary()
 
@@ -83,21 +76,18 @@ import pickle
 # to save the fitted tokenizer
 with open('model/tokenizer.pickle', 'wb') as handle:
     pickle.dump(tokenizer, handle, protocol=pickle.HIGHEST_PROTOCOL)
-    
 # to save the fitted label encoder
 with open('model/label_encoder.pickle', 'wb') as ecn_file:
     pickle.dump(lbl_encoder, ecn_file, protocol=pickle.HIGHEST_PROTOCOL)
-
 
 @csrf_exempt
 def chatanswer(request):
     context = {}
 
     questext = request.GET['questext']
-
     import pickle
 
-    file = open(f"./model/intents.json", encoding="UTF-8")
+    file = open("./model/intents.json", encoding="UTF-8")
     data = json.loads(file.read())
 
     def chat3(inp):
@@ -116,12 +106,11 @@ def chatanswer(request):
         max_len = 50
 
         # while True:
-        print( "User: ", end="")
+        print("User: ", end="")
 
         result = model.predict(keras.preprocessing.sequence.pad_sequences(tokenizer.texts_to_sequences([inp]),
                                                                           truncating='post', maxlen=max_len))
         tag = lbl_encoder.inverse_transform([np.argmax(result)])
-
         for i in data['intents']:
             if i['tag'] == tag:
                 txt1 = np.random.choice(i['responses'])

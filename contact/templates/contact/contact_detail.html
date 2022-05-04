@@ -17,7 +17,11 @@
                 <b style='color: #000000'>
                       작성자 ID : <b>{{question.username}}</b>
             </div>
-            
+            {%if question.file  %}
+            <div style="text-align:center;">
+                <img src="{{question.file.url}}" width="300"><br>
+            </div>
+            {%endif%}
                 <div class="card-text" style="white-space: pre-line;">
                     　{{ question.content }}
                 </div>

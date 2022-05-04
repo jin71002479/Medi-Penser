@@ -1,10 +1,8 @@
-from http.client import HTTPResponse
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from .models import User
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.decorators import login_required
-from django.views.decorators.csrf import csrf_exempt
+
  
 
 def login_view(request):
@@ -13,9 +11,9 @@ def login_view(request):
         password = request.POST.get('password')
         user = authenticate(username = username, password = password)
         if user is not None:
-           print("인증성공")
-           login(request, user)
-           return redirect('main:index')
+            print("인증성공")
+            login(request, user)
+            return redirect('main:index')
         else:
             print("인증실패")    
     return render(request, "login.html")
