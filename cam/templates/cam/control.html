@@ -1,0 +1,37 @@
+<html>
+	<head> 
+	<!--
+		공대선배 라즈베리 파이썬 #20 웹사이트의 버튼, 슬라이더 바를 이용해 서보모터를 제어하는 코드 html 파일
+		채널 주소 : https://www.youtube.com/channel/UCsiwB64NJe1JYFZ6iUeFQqA
+	-->
+    <!--title은 브라우저 맨 위(제목표시줄)에 나오는 내용을 결정-->
+	<title>SERVO CONTROLLER</title>	
+	<meta name="viewport" content="width=device-width initial-scale=1">
+	</head> 
+	<body>
+		<!--본문 시작. h1은 가장 큰 글씨로 글자를 써줌-->
+		<h1>Web에서 라즈베리파이의 서보모터 제어하기</h1>
+		<!--hr은 수평 가로줄을 그려줌-->
+        <hr>
+
+		<div style="padding-left:20px;">
+        <!--h3는 중간크기 글씨로 글자를 써줌-->
+			<h3>서보모터 제어</h3>
+                <!--
+					html에서 파이썬으로 변수값을 보낼때, GET, POST 두가지 방식중 하나를 사용해서 넘겨줌
+					여기서는 GET 방식을 사용함. 또한 변수값 전송은 form 형태로 만들어둬야 함
+					또한 action="/servo_control"로 해두면, 해당 주소에서 변수를 요청해야 값을 넘겨줌
+					복잡한 사이트에서 혼동을 방지하기 위한 것(사용자1용 페이지에서 사용자 2의 변수값을 요구할 수 없음) 
+					아래 두개는 버튼으로 각각 현재각도+10, -10을 해주는 것
+					같은 함수를 사용하기 때문에 주소를 따로 나누지 않아도 됨
+				-->
+				<form method="GET" action="/servo_control">
+						<input type="range" min="0" max="180" name="deg" value={{deg}} onchange="this.form.submit()"/> 		
+				</form>
+				<a href="{{ url_for('servo_control', deg=deg+10) }}"><input type="button" value="+10" ></a>
+				<a href="{{ url_for('servo_control', deg=deg-10) }}"><input type="button" value="-10" ></a>
+				각도 : {{deg}}
+            <hr>
+		</div>
+	</body>
+</html>
