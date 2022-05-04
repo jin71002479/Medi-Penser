@@ -1,5 +1,6 @@
 from datetime import datetime
 import PIL
+from cv2 import CAP_DSHOW
 from django.utils import timezone
 import os
 import threading
@@ -31,16 +32,16 @@ def Register(request):
     return render(request, "cam/input.html")
 
 directory= os.getcwd()
-filePath = directory + '/capture/'
 paths=directory+'/dataset/'
 trainpath=directory+'/trainer/trainer.yml'
 recognizer = cv2.face.LBPHFaceRecognizer_create()
 detector = cv2.CascadeClassifier(cv2.data.haarcascades + "haarcascade_frontalface_default.xml")
-
+if not os.path.exists(paths):
+    os.makedirs(paths)
 def cap(request):
 	rows = Photo.objects.all()
 	nums=rows.count()
-	cam = cv2.VideoCapture(0)
+	cam = cv2.VideoCapture(0+CAP_DSHOW)
 	cam.set(3, 640) # set video width
 	cam.set(4, 480) # set video height
 	face_detector = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
@@ -101,7 +102,7 @@ def md(request):
 		names.append(i.names)
 
 	while True:
-		cam = cv2.VideoCapture(0)
+		cam = cv2.VideoCapture(0+CAP_DSHOW)
 		cam.set(3, 640) # set video widht
 		cam.set(4, 480) # set video height
 
