@@ -16,12 +16,13 @@ from sklearn.preprocessing import LabelEncoder
 def index(request):
     context={}
     return render(request, 'main/index.html',context)
-
+    
 def about(request):
     return render(request, 'main/about.html')
 
 with open('model/intents.json','r', encoding="UTF-8") as file:
     data = json.load(file)
+    
 training_sentences = []
 training_labels = []
 labels = []

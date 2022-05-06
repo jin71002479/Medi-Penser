@@ -16,6 +16,10 @@
             <div class="card-header py-3"  >
                 <b style='color: #000000'>
                       작성자 ID : <b>{{question.username}}</b>
+                      <div style="float:right;" class="badge badge-light p-2" >
+                        {{ question.pub_date }}
+                    </div>
+                    
             </div>
             {%if question.file  %}
             <div style="text-align:center;">
@@ -27,14 +31,18 @@
                 </div>
                 <div class="card-body">
                 <div class="d-flex justify-content-end">
-                    <div class="badge badge-light p-2">
-    
-    
-                        {{ question.pub_date }}
-                        <br><br>
-                   
+                    <div class="form-group">
+                        <a href="{% url 'contact:list' %}" class="btn btn-light" style='background-color:#86DACA'><span style='color:grey;font-weight:bold'>
+                            목록으로</span>
+                        </a>
+                        <a href="{% url 'contact:download' question.id %}" class="btn btn-light" style='background-color:#86DACA'><span style='color:grey;font-weight:bold'>
+                            다운로드</span></a>           
+                        <a href="{% url 'contact:update' question.id %}" class="btn btn-light" style='background-color:#86DACA'>
+                            <span style='color:grey;font-weight:bold'>수정</a></span>
+                        <a href="{% url 'contact:delete' question.id %}" class="btn btn-light" style='background-color:#86DACA'>
+                            <span style='color:grey;font-weight:bold'>삭제</span></a>
                     </div>
-                    
+                
                 </div>
             </div>
         </div>
@@ -69,7 +77,7 @@
             </div>
             <div class="card-body">
             <div class="d-flex justify-content-end">
-                <div class="badge badge-light p-2">
+                <div class="badge badge-light p-2" style='background-color:white'>
 
 
                     {{ answer.create_date }}
@@ -99,20 +107,11 @@
         {% endif %}
         <!-- 오류표시 End -->
 
-        <div class="form-group">
+       
             <textarea name="content" id="content" class="form-control" rows="7" placeholder="내용을 입력해주세요"></textarea>
         </div>
-        <div style='text-align:right;'>
+        <div style='text-align:center;'>
             <input type="submit" value="답변등록" class="btn btn-light" style='color:grey;font-weight:bold;background-color:#86DACA'>
-            <a href="{% url 'contact:list' %}" class="btn btn-light" style='background-color:#86DACA'><span style='color:grey;font-weight:bold'>
-                목록으로</span>
-            </a>
-            <a href="{% url 'contact:download' question.id %}" class="btn btn-light" style='background-color:#86DACA'><span style='color:grey;font-weight:bold'>
-                다운로드</span></a>           
-            <a href="{% url 'contact:update' question.id %}" class="btn btn-light" style='background-color:#86DACA'>
-                <span style='color:grey;font-weight:bold'>수정</a></span>
-            <a href="{% url 'contact:delete' question.id %}" class="btn btn-light" style='background-color:#86DACA'>
-                <span style='color:grey;font-weight:bold'>삭제</span></a>
         </div>
     </form>
     <div>
