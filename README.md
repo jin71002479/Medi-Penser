@@ -36,9 +36,10 @@
 ![작업](https://user-images.githubusercontent.com/90889155/167336536-2bead010-65c2-472b-b64b-674f88359d07.PNG)
 
 ## ERD
-![erd](https://user-images.githubusercontent.com/90889155/167344017-314fd66d-65b0-42f4-86c6-206da4f5bd6f.png)
+![erd](https://user-images.githubusercontent.com/90889155/167431283-8bb696ce-35d3-4a9b-88fb-9f9b1a5057ca.PNG)
 
 ## Architecture
+![arc](https://user-images.githubusercontent.com/90889155/167430614-82109d19-9e90-4874-9df8-8f0c082301ba.PNG)
 ## UI UX
 - 메인 페이지
 ![127 0 0 1_8000_ (1)](https://user-images.githubusercontent.com/90889155/167337450-3ef8d319-29ff-4e6d-ac95-b7ae33461a74.png)
