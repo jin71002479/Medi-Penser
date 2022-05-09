@@ -43,6 +43,16 @@
 - 메인 페이지
 ![127 0 0 1_8000_ (1)](https://user-images.githubusercontent.com/90889155/167337450-3ef8d319-29ff-4e6d-ac95-b7ae33461a74.png)
 
+- 로그인,회원가입
+![login](https://user-images.githubusercontent.com/90889155/167346333-155600de-c606-42eb-974f-266557446a96.png)
+
+- 게시판
+![게시판2](https://user-images.githubusercontent.com/90889155/167348425-f80547c1-22fa-46b6-a654-2992e8dba927.PNG)
+
+- 게시글
+![게시판](https://user-images.githubusercontent.com/90889155/167348335-834af48a-0127-4123-a3eb-323f08605d59.PNG)
+
+
 ## 인식할 얼굴의 data set 만들기
 ![OpenCV - Webcam Capture](https://user-images.githubusercontent.com/85106442/165012056-c7a9ad83-9ffe-43cf-88ca-be2a3c083576.jpg)   
    
