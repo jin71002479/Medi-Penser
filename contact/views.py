@@ -90,28 +90,6 @@ def upload3(request):
         request, 'contact/contact_form.html', {'form': form})
 
 
-@login_required(login_url='member:login2')
-def upload4(request):
-    user = User.objects.get(username = request.user.username)   
-    if request.method == 'POST':
-        form = QuestionForm(request.POST, request.FILES)
-             
-        if form.is_valid():
-            uploadFile = form.save(commit=False)
-            if uploadFile.file:        
-                name = uploadFile.file.name 
-                size = uploadFile.file.size                              
-            uploadFile.pub_date = timezone.now()
-            uploadFile.username = request.user.username
-            uploadFile.save()
-            user.save()
-            return redirect('contact:list2')
-    else:
-        form = QuestionForm()
-    return render(
-        request, 'contact/contact_form2.html', {'form': form})
-
-
 def update(request, question_id):
     question = Question.objects.get(id=question_id)
     if(question.username == request.user.username):

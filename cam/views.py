@@ -5,7 +5,7 @@ from django.shortcuts import render,redirect
 import numpy as np
 from cam.models import Photo
 from PIL import Image
-
+from django.contrib.auth.decorators import login_required
 
 def camera_1(request):
 	rows = Photo.objects.all()
@@ -14,7 +14,7 @@ def camera_1(request):
 		names.append(i.names)
 	l=len(names)
 	return render(request, 'cam/camera.html',{'names':names,'l':l})
-
+@login_required(login_url='member:login')
 def Register(request):
 	if request.method == "POST": 
 		print(request.POST)
@@ -75,7 +75,7 @@ def getImagesAndLabels(path):
 			faceSamples.append(img_numpy[y:y+h,x:x+w])
 			ids.append(id)
 	return faceSamples,ids
-
+@login_required(login_url='member:login')
 def md(request):
 	faces,ids = getImagesAndLabels(paths)
 	recognizer.train(faces, np.array(ids))
