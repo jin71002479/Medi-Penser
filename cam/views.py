@@ -55,7 +55,7 @@ def cap(request):
         k = cv2.waitKey(100) & 0xff 
         if k == 27:
             break
-        elif count >= 30:
+        elif count >= 50:
             break
     cam.release()
     cv2.destroyAllWindows()
