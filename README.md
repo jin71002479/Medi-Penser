@@ -65,4 +65,4 @@ minSize=(20,20) # 얼굴 최소 크기
 ![Face Detecting](https://user-images.githubusercontent.com/85106442/165013243-437f7427-19b0-4ddc-9dd8-322243a59449.png)
 
 ## 하드웨어 설계
-![hardware](https://user-images.githubusercontent.com/85106442/166610878-f2529531-eca6-4b89-a5a7-d60b41e9e488.png)
+![hardware](https://user-images.githubusercontent.com/42240751/167565215-081b5eef-5211-49af-9e4c-fefca8251c28.png)
