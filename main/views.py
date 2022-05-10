@@ -1,5 +1,5 @@
 import json
-import os 
+import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 from tensorflow import keras
 from django.shortcuts import render
@@ -54,19 +54,18 @@ sequences = tokenizer.texts_to_sequences(training_sentences)
 padded_sequences = pad_sequences(sequences, truncating='post', maxlen=max_len)
 
 # Model Training
-
+keras.backend.clear_session()
 model = Sequential()
 model.add(Embedding(vocab_size, embedding_dim, input_length=max_len))
 model.add(GlobalAveragePooling1D())
+model.add(Dense(16, activation='selu'))
 model.add(Dense(16, activation='selu'))
 model.add(Dense(16, activation='selu'))
 model.add(Dense(num_classes, activation='softmax'))
 
 model.compile(loss='sparse_categorical_crossentropy',optimizer='adam', metrics=['accuracy'])
 
-model.summary()
-
-epochs = 500
+epochs = 350
 history = model.fit(padded_sequences, np.array(training_labels), epochs=epochs)
 
 # to save the trained model
