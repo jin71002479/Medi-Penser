@@ -50,7 +50,7 @@
 >> 3. KT B2B+DIGICO 사업 비중 확대에 이바지
 
 ## 서비스 FLOW
-![big project service flow](https://user-images.githubusercontent.com/42240751/164355370-c89f4473-6ac1-417b-819d-c72b85e32a00.jpg)
+![big project service flow](https://user-images.githubusercontent.com/42240751/167726064-08bf290b-c552-4b6e-91dd-90813e099f01.jpg)
 
 ## 기능 Flow
 ![기능](https://user-images.githubusercontent.com/90889155/167329955-8ea883ee-bc1c-4ef6-90c4-1f1bce145fc7.PNG)
