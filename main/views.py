@@ -20,6 +20,7 @@ def index(request):
 def about(request):
     return render(request, 'main/about.html')
 
+#학습코드 시작
 # with open('model/intents.json','r', encoding="UTF-8") as file:
 #     data = json.load(file)
     
@@ -60,16 +61,15 @@ def about(request):
 # model.add(GlobalAveragePooling1D())
 # model.add(Dense(16, activation='selu'))
 # model.add(Dense(16, activation='selu'))
-# model.add(Dense(16, activation='selu'))
 # model.add(Dense(num_classes, activation='softmax'))
 
 # model.compile(loss='sparse_categorical_crossentropy',optimizer='adam', metrics=['accuracy'])
 
-# epochs = 500
+# epochs = 1000
 # history = model.fit(padded_sequences, np.array(training_labels), epochs=epochs)
 
 # # to save the trained model
-# model.save("model/chat_model")
+# model.save("model/chat_model.h5")
 
 # import pickle
 
@@ -79,6 +79,7 @@ def about(request):
 # # to save the fitted label encoder
 # with open('model/label_encoder.pickle', 'wb') as ecn_file:
 #     pickle.dump(lbl_encoder, ecn_file, protocol=pickle.HIGHEST_PROTOCOL)
+
 
 @csrf_exempt
 def chatanswer(request):
@@ -92,7 +93,7 @@ def chatanswer(request):
 
     def chat3(inp):
         # load trained model
-        model = keras.models.load_model('model/chat_model')
+        model = keras.models.load_model('model/chat_model.h5')
 
         # load tokenizer object
         with open('model/tokenizer.pickle', 'rb') as handle:
