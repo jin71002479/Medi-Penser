@@ -12,6 +12,13 @@
 > python manage.py migrate(최초실행시)
 > python manage.py runserver
 ```
+
+### 챗봇이 대답이 없을때
+```
+> python train.py
+> python manage.py runserver
+```
+
 # 목차 
 
 - [선정배경 및 기대효과](#선정배경-및-기대효과)
