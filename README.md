@@ -18,6 +18,10 @@
 > python train.py
 > python manage.py runserver
 ```
+# CNN_FaceRecog.ipynb
+  웹 캠을 사용한 직접 데이터 수집이 가능한 CNN 모델링을 위한 주피터 노트북 파일
+  하드웨어에 적용하기 위한 모델을 만들기 위해 사용합니다.
+
 
 # 목차 
 
