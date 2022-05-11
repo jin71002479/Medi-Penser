@@ -12,7 +12,6 @@
 > python manage.py migrate(최초실행시)
 > python manage.py runserver
 ```
-
 ### 챗봇이 대답이 없을때
 ```
 > python train.py
