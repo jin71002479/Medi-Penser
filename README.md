@@ -12,6 +12,13 @@
 > python manage.py migrate(최초실행시)
 > python manage.py runserver
 ```
+
+### 챗봇이 대답이 없을때
+```
+> python train.py
+> python manage.py runserver
+```
+
 # 목차 
 
 - [선정배경 및 기대효과](#선정배경-및-기대효과)
@@ -50,7 +57,7 @@
 >> 3. KT B2B+DIGICO 사업 비중 확대에 이바지
 
 ## 서비스 FLOW
-![big project service flow](https://user-images.githubusercontent.com/42240751/164355370-c89f4473-6ac1-417b-819d-c72b85e32a00.jpg)
+![big project service flow](https://user-images.githubusercontent.com/42240751/167738730-690cfd87-d268-491a-9928-5c3d28a6b223.png)
 
 ## 기능 Flow
 ![기능](https://user-images.githubusercontent.com/90889155/167329955-8ea883ee-bc1c-4ef6-90c4-1f1bce145fc7.PNG)
