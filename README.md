@@ -99,3 +99,7 @@ minSize=(20,20) # 얼굴 최소 크기
 
 ## 하드웨어 설계
 ![hardware](https://user-images.githubusercontent.com/42240751/167565955-97236825-ba37-4370-b277-b85fbaae94e2.png)
+
+## 하드웨어 - 시제품
+![KakaoTalk_20220512_105948997_01](https://user-images.githubusercontent.com/85106442/168508020-67891cf8-5e7b-4e2b-96a5-c011541fb458.jpg)
+![KakaoTalk_20220512_105948997](https://user-images.githubusercontent.com/85106442/168508012-34d7498d-f23b-46d3-975f-27ffd59cc510.jpg)
